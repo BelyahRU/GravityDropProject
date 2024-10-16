@@ -1,9 +1,4 @@
-//
-//  AppDelegate.swift
-//  GravityDropProject
-//
-//  Created by Александр Андреев on 16.10.2024.
-//
+
 
 import UIKit
 
