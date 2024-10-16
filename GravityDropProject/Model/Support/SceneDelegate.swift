@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func start() {
         navigationController = UINavigationController()
+        navigationController.navigationBar.isHidden = true
         coordinator = MainCoordinator()
         coordinator.navigationController = navigationController
         coordinator.start()
