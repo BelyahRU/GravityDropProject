@@ -1,16 +1,16 @@
 import Foundation
 import UIKit
 
-class MainCoordinator: Coordinator {
+final class MainCoordinator: Coordinator {
     
     var navigationController: UINavigationController!
     var mainViewController: MainViewController!
     var leaderboardViewController: LeaderboardViewController!
+    var settingsViewController: SettingsViewController!
     
     
     func start() {
         showMain()
-//        showLeaderboard()
     }
     
     func showMain() {
@@ -23,5 +23,11 @@ class MainCoordinator: Coordinator {
         leaderboardViewController = LeaderboardViewController()
         leaderboardViewController.coordinator = self
         navigationController.pushViewController(leaderboardViewController, animated: true)
+    }
+    
+    func showSettings() {
+        settingsViewController = SettingsViewController()
+        settingsViewController.coordinator = self
+        navigationController.pushViewController(settingsViewController, animated: true)
     }
 }

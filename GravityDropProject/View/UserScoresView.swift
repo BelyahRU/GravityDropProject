@@ -2,7 +2,7 @@
 import Foundation
 import UIKit
 
-class UserScoresView: UIView {
+final class UserScoresView: UIView {
     
     private let backview: UIImageView = {
         let im = UIImageView()
