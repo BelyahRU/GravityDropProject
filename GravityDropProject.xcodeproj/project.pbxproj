@@ -34,6 +34,8 @@
 		1A90C4872CC052180066E76D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A90C4862CC052180066E76D /* SettingsView.swift */; };
 		1A90C48B2CC05D560066E76D /* SettingsVC + Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A90C48A2CC05D560066E76D /* SettingsVC + Action.swift */; };
 		1A90C48D2CC063990066E76D /* ClearProgressAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A90C48C2CC063990066E76D /* ClearProgressAgreeView.swift */; };
+		1A90C4902CC17CB00066E76D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A90C48F2CC17CB00066E76D /* GameScene.swift */; };
+		1A90C4922CC17CD70066E76D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A90C4912CC17CD70066E76D /* GameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +67,8 @@
 		1A90C4862CC052180066E76D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1A90C48A2CC05D560066E76D /* SettingsVC + Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC + Action.swift"; sourceTree = "<group>"; };
 		1A90C48C2CC063990066E76D /* ClearProgressAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearProgressAgreeView.swift; sourceTree = "<group>"; };
+		1A90C48F2CC17CB00066E76D /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		1A90C4912CC17CD70066E76D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 		1A3A9E7B2CC037A400C56610 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1A90C48E2CC17CA40066E76D /* Game */,
 				1A90C4832CC052020066E76D /* Settings */,
 				1A90C4822CC051D10066E76D /* Leaderboard */,
 				1A3A9E842CC03A4900C56610 /* Main */,
@@ -217,6 +222,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		1A90C48E2CC17CA40066E76D /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				1A90C48F2CC17CB00066E76D /* GameScene.swift */,
+				1A90C4912CC17CD70066E76D /* GameViewController.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -299,6 +313,7 @@
 				1A90C4792CC04B8D0066E76D /* ScoresManager.swift in Sources */,
 				1A3A9E802CC037D400C56610 /* Coordinator.swift in Sources */,
 				1A90C4852CC052100066E76D /* SettingsViewController.swift in Sources */,
+				1A90C4922CC17CD70066E76D /* GameViewController.swift in Sources */,
 				1A3A9E862CC03A5100C56610 /* MainView.swift in Sources */,
 				1A3A9E882CC03ACA00C56610 /* Resources.swift in Sources */,
 				1A90C47B2CC04DEE0066E76D /* LeadersVC + Action.swift in Sources */,
@@ -312,6 +327,7 @@
 				1A90C47D2CC04E910066E76D /* MainVC + Action.swift in Sources */,
 				1A90C4752CC049EB0066E76D /* Leader.swift in Sources */,
 				1A90C4722CC049D10066E76D /* LeadersViewModel.swift in Sources */,
+				1A90C4902CC17CB00066E76D /* GameScene.swift in Sources */,
 				1A3A9E922CC03EBF00C56610 /* LeaderboardViewController.swift in Sources */,
 				1A3A9E682CC0378900C56610 /* SceneDelegate.swift in Sources */,
 				1A90C4812CC04F970066E76D /* UserScoresView.swift in Sources */,
