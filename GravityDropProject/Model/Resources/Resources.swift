@@ -41,6 +41,14 @@ enum Resources {
         static let starsView3 = "starsView3"
     }
     
+    enum Obstacles {
+        static let circleObstacle = "circleObstacle"
+        static let rectangleObstacle60x8 = "rectangleObstacle60x8"
+        static let rectangleObstacle96x8 = "rectangleObstacle96x8"
+        static let rectangleObstacle132x8 = "rectangleObstacle132x8"
+        static let verticalRectangleObstacle = "verticalRectangleObstacle"
+    }
+    
     enum Colors {
         
     }

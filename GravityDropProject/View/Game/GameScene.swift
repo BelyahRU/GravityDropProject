@@ -5,23 +5,30 @@ struct PhysicsCategory {
     static let ball: UInt32 = 0x1 << 0  // Битовая маска для мяча
     static let gravityZone: UInt32 = 0x1 << 1  // Битовая маска для гравитационных зон
     static let boundary: UInt32 = 0x1 << 2  // Битовая маска для границ
+    static let box: UInt32 = 0x1 << 3  // Битовая маска для коробки
+    static let star: UInt32 = 0x1 << 4
+    static let obstacle: UInt32 = 0x1 << 5
 }
 
 
 
-class GameScene: SKScene {
+
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var ball: SKShapeNode!
     var gravityZones: [SKSpriteNode] = []
     var isInGravityZone = false
     let background = SKSpriteNode(imageNamed: Resources.Images.gameBackView)
+    var box: SKSpriteNode!
+    var starsCollected: Int = 0  // Количество собранных звезд
+    weak var gameViewControllerDelegate: GameViewController?
 
     override func didMove(to view: SKView) {
         setupBackground()
         setupScene()
-        setupGravityZones()
         self.backgroundColor = .clear
     }
+
     
     func setupBackground() {
             // Создайте SKSpriteNode с фоновым изображением
@@ -32,10 +39,12 @@ class GameScene: SKScene {
             addChild(background)
         }
     
+    
     func setupScene() {
         physicsWorld.gravity = CGVector(dx: 0, dy: -1.3)
 
         // Создаем физическое тело для границ фона
+        physicsWorld.contactDelegate = self
         physicsBody = SKPhysicsBody(edgeLoopFrom: background.frame)
         physicsBody?.categoryBitMask = PhysicsCategory.boundary  // Категория для границ
         physicsBody?.collisionBitMask = PhysicsCategory.ball     // Мяч может сталкиваться с границами
@@ -56,39 +65,6 @@ class GameScene: SKScene {
     }
 
 
-    func setupGravityZones() {
-        // Создаём первое гравитационное поле с изображением
-        let gravityZone = SKSpriteNode(imageNamed: "gravityZone") // Замените на ваше изображение
-        gravityZone.position = CGPoint(x: frame.width - 120, y: frame.height - 200)
-        gravityZone.zPosition = 1
-        gravityZone.size = CGSize(width: 200, height: 200) // Размер изображения
-        
-        // Устанавливаем физическое тело для гравитационной зоны
-        gravityZone.physicsBody = SKPhysicsBody(circleOfRadius: gravityZone.size.width / 2) // Устанавливаем радиус по размеру изображения
-        gravityZone.physicsBody?.isDynamic = false // Зона не должна двигаться
-        gravityZone.physicsBody?.categoryBitMask = PhysicsCategory.gravityZone // Устанавливаем битовую маску для зоны
-        gravityZone.physicsBody?.contactTestBitMask = PhysicsCategory.ball // С чем зона может взаимодействовать
-        gravityZone.physicsBody?.collisionBitMask = 0 // Зона не должна сталкиваться, только влиять
-
-        addChild(gravityZone)
-        gravityZones.append(gravityZone)
-        
-        // Создаём второе гравитационное поле с другим изображением
-        let gravityZone2 = SKSpriteNode(imageNamed: "gravityZone")
-        gravityZone2.position = CGPoint(x: 100, y: 100)
-        gravityZone2.zPosition = 1
-        gravityZone2.size = CGSize(width: 120, height: 120)
-        
-        // Устанавливаем физическое тело для второго поля
-        gravityZone2.physicsBody = SKPhysicsBody(circleOfRadius: gravityZone2.size.width / 2)
-        gravityZone2.physicsBody?.isDynamic = false
-        gravityZone2.physicsBody?.categoryBitMask = PhysicsCategory.gravityZone
-        gravityZone2.physicsBody?.contactTestBitMask = PhysicsCategory.ball
-        gravityZone2.physicsBody?.collisionBitMask = 0
-
-        addChild(gravityZone2)
-        gravityZones.append(gravityZone2)
-    }
     
     func applyGravity() {
         ball.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -20))
@@ -121,6 +97,77 @@ class GameScene: SKScene {
                 ball.physicsBody?.applyForce(centripetalForce)
             }
         }
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let firstBody = contact.bodyA
+            let secondBody = contact.bodyB
+
+            // Убедитесь, что мяч попадает в коробку только сверху
+            if (firstBody.categoryBitMask == PhysicsCategory.ball && secondBody.categoryBitMask == PhysicsCategory.box) ||
+               (firstBody.categoryBitMask == PhysicsCategory.box && secondBody.categoryBitMask == PhysicsCategory.ball) {
+                
+                // Получаем координаты обоих объектов
+                let ballPosition = firstBody.categoryBitMask == PhysicsCategory.ball ? firstBody.node!.position : secondBody.node!.position
+                let boxPosition = firstBody.categoryBitMask == PhysicsCategory.box ? firstBody.node!.position : secondBody.node!.position
+                
+                let ballNode = firstBody.categoryBitMask == PhysicsCategory.ball ? firstBody.node! : secondBody.node!
+                let boxNode = firstBody.categoryBitMask == PhysicsCategory.box ? firstBody.node! : secondBody.node!
+                
+                // Проверяем, касается ли мяч верхней границы коробки
+                if ballPosition.y + ball.frame.size.height / 2 >= boxPosition.y - box.frame.size.height / 2 &&
+                    (ballNode.frame.minX >= boxNode.frame.minX && ballNode.frame.maxX <= boxNode.frame.maxX) {
+                    endLevel()  // Окончание уровня, если мяч касается верхней границы коробки
+                } else {
+                    // Проверяем, касается ли мяч левой, правой или нижней грани коробки
+                    if ballPosition.x + ball.frame.size.width / 2 >= boxPosition.x + box.frame.size.width / 2 {
+                        // Столкновение с правой гранью коробки
+                        ball.physicsBody?.velocity.dx = -abs(ball.physicsBody!.velocity.dx)
+                    } else if ballPosition.x - ball.frame.size.width / 2 <= boxPosition.x - box.frame.size.width / 2 {
+                        // Столкновение с левой гранью коробки
+                        ball.physicsBody?.velocity.dx = abs(ball.physicsBody!.velocity.dx)
+                    } else if ballPosition.y - ball.frame.size.height / 2 <= boxPosition.y - box.frame.size.height / 2 {
+                        // Столкновение с нижней гранью коробки
+                        ball.physicsBody?.velocity.dy = abs(ball.physicsBody!.velocity.dy)
+                    }
+                }
+            }
+
+        let collision = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+
+        // Проверяем столкновение мяча со звездой
+        if collision == PhysicsCategory.ball | PhysicsCategory.star {
+            let starNode = contact.bodyA.categoryBitMask == PhysicsCategory.star ? contact.bodyA.node : contact.bodyB.node
+            
+            // Увеличиваем счётчик звезд и удаляем звезду
+            starNode?.removeFromParent()
+            starsCollected += 1
+            gameViewControllerDelegate?.updateStarsView(stars: starsCollected)
+        }
+        
+        // Проверяем столкновение мяча с препятствием
+        if collision == PhysicsCategory.ball | PhysicsCategory.obstacle {
+            endGame()  // Окончание игры при контакте с препятствием
+        }
+    }
+
+    func endGame() {
+        // Останавливаем игру и показываем сообщение о конце игры
+        self.isPaused = true
+        
+        let gameOverLabel = SKLabelNode(text: "Game Over")
+        gameOverLabel.fontSize = 40
+        gameOverLabel.fontColor = .red
+        gameOverLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        
+        addChild(gameOverLabel)
+    }
+
+
+    
+    func endLevel() {
+        print("Уровень завершён! Мяч попал в коробку сверху.")
+        self.isPaused = true
     }
     
     func distanceBetween(_ point1: CGPoint, _ point2: CGPoint) -> CGFloat {

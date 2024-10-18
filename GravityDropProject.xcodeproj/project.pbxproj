@@ -39,6 +39,7 @@
 		1A90C4942CC1AB190066E76D /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A90C4932CC1AB190066E76D /* PauseView.swift */; };
 		1A90C4962CC1ACD30066E76D /* GameVC + Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A90C4952CC1ACD30066E76D /* GameVC + Action.swift */; };
 		1A90C4982CC1AFD10066E76D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A90C4972CC1AFD10066E76D /* GameView.swift */; };
+		1A90C49B2CC288480066E76D /* GameScene + Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A90C49A2CC288480066E76D /* GameScene + Level.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		1A90C4932CC1AB190066E76D /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		1A90C4952CC1ACD30066E76D /* GameVC + Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameVC + Action.swift"; sourceTree = "<group>"; };
 		1A90C4972CC1AFD10066E76D /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		1A90C49A2CC288480066E76D /* GameScene + Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene + Level.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 		1A90C48E2CC17CA40066E76D /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				1A90C4992CC288360066E76D /* GameScene */,
 				1A90C48F2CC17CB00066E76D /* GameScene.swift */,
 				1A90C4912CC17CD70066E76D /* GameViewController.swift */,
 				1A90C4932CC1AB190066E76D /* PauseView.swift */,
@@ -238,6 +241,14 @@
 				1A90C4972CC1AFD10066E76D /* GameView.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		1A90C4992CC288360066E76D /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				1A90C49A2CC288480066E76D /* GameScene + Level.swift */,
+			);
+			path = GameScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +348,7 @@
 				1A90C4942CC1AB190066E76D /* PauseView.swift in Sources */,
 				1A90C4702CC0474B0066E76D /* LeaderCollectionViewCell.swift in Sources */,
 				1A90C47D2CC04E910066E76D /* MainVC + Action.swift in Sources */,
+				1A90C49B2CC288480066E76D /* GameScene + Level.swift in Sources */,
 				1A90C4752CC049EB0066E76D /* Leader.swift in Sources */,
 				1A90C4722CC049D10066E76D /* LeadersViewModel.swift in Sources */,
 				1A90C4902CC17CB00066E76D /* GameScene.swift in Sources */,

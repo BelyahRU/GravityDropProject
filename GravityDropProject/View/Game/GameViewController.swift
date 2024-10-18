@@ -2,7 +2,11 @@ import UIKit
 import SpriteKit
 import SnapKit
 
-class GameViewController: UIViewController {
+protocol GameViewControllerDelegate: AnyObject {
+    func updateStarsView(stars: Int)
+}
+
+class GameViewController: UIViewController, GameViewControllerDelegate {
     
     var scene: GameScene!
     
@@ -33,7 +37,7 @@ class GameViewController: UIViewController {
     let currentLevelLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont(name: "Orbitron-ExtraBold", size: 24)
-        label.text = "Level 1"
+        label.text = "Level 5"
         label.backgroundColor = .clear
         label.textAlignment = .center
         label.textColor = .white
@@ -82,7 +86,8 @@ class GameViewController: UIViewController {
         let sceneSize = CGSize(width: skView.bounds.width, height: skView.bounds.height)
         scene = GameScene(size: sceneSize)
         scene.scaleMode = .resizeFill
-
+        scene.gameViewControllerDelegate = self
+        scene.setupLevel(num: 5)
         skView.presentScene(scene)
         
     }
@@ -145,6 +150,19 @@ class GameViewController: UIViewController {
         }
         dimView.isHidden = true
         
+    }
+    
+    func updateStarsView(stars: Int) {
+        switch stars {
+        case 0 :
+            self.starsView.image = UIImage(named: Resources.StarViews.starsView0)
+        case 1 :
+            self.starsView.image = UIImage(named: Resources.StarViews.starsView1)
+        case 2 :
+            self.starsView.image = UIImage(named: Resources.StarViews.starsView2)
+        default:
+            self.starsView.image = UIImage(named: Resources.StarViews.starsView3)
+        }
     }
 
     
