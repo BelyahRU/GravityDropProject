@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A13B0692CC2F9AF003F26B2 /* LevelsSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B0682CC2F9AF003F26B2 /* LevelsSelectionViewModel.swift */; };
+		1A13B06B2CC2FE16003F26B2 /* LevelsSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B06A2CC2FE16003F26B2 /* LevelsSelectionCollectionViewCell.swift */; };
+		1A13B06D2CC30109003F26B2 /* LevelsSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B06C2CC30109003F26B2 /* LevelsSelectionVC.swift */; };
 		1A3A9E662CC0378900C56610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9E652CC0378900C56610 /* AppDelegate.swift */; };
 		1A3A9E682CC0378900C56610 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9E672CC0378900C56610 /* SceneDelegate.swift */; };
 		1A3A9E6F2CC0378C00C56610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A3A9E6E2CC0378C00C56610 /* Assets.xcassets */; };
@@ -46,6 +49,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A13B0682CC2F9AF003F26B2 /* LevelsSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsSelectionViewModel.swift; sourceTree = "<group>"; };
+		1A13B06A2CC2FE16003F26B2 /* LevelsSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		1A13B06C2CC30109003F26B2 /* LevelsSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsSelectionVC.swift; sourceTree = "<group>"; };
 		1A3A9E622CC0378900C56610 /* GravityDropProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GravityDropProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A3A9E652CC0378900C56610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A3A9E672CC0378900C56610 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +171,7 @@
 			children = (
 				1A90C4712CC049D10066E76D /* LeadersViewModel.swift */,
 				1A90C47E2CC04F340066E76D /* MainViewModel.swift */,
+				1A13B0682CC2F9AF003F26B2 /* LevelsSelectionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -272,6 +279,8 @@
 			children = (
 				1A90C4A72CC2F0260066E76D /* LevelsSelectionViewController.swift */,
 				1A90C4AA2CC2F0650066E76D /* LevelsSelectionView.swift */,
+				1A13B06A2CC2FE16003F26B2 /* LevelsSelectionCollectionViewCell.swift */,
+				1A13B06C2CC30109003F26B2 /* LevelsSelectionVC.swift */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -355,6 +364,7 @@
 			files = (
 				1A90C4AB2CC2F0650066E76D /* LevelsSelectionView.swift in Sources */,
 				1A90C4872CC052180066E76D /* SettingsView.swift in Sources */,
+				1A13B06B2CC2FE16003F26B2 /* LevelsSelectionCollectionViewCell.swift in Sources */,
 				1A3A9E8D2CC03CFD00C56610 /* MainViewController.swift in Sources */,
 				1A90C4B92CC2F6110066E76D /* PauseView.swift in Sources */,
 				1A90C4AF2CC2F36A0066E76D /* LeaderboardVC + CollectionView.swift in Sources */,
@@ -379,7 +389,9 @@
 				1A90C4B72CC2F56D0066E76D /* LoseView.swift in Sources */,
 				1A90C4AD2CC2F34A0066E76D /* LeaderCollectionViewCell.swift in Sources */,
 				1A90C4752CC049EB0066E76D /* Leader.swift in Sources */,
+				1A13B06D2CC30109003F26B2 /* LevelsSelectionVC.swift in Sources */,
 				1A90C4722CC049D10066E76D /* LeadersViewModel.swift in Sources */,
+				1A13B0692CC2F9AF003F26B2 /* LevelsSelectionViewModel.swift in Sources */,
 				1A90C4902CC17CB00066E76D /* GameScene.swift in Sources */,
 				1A3A9E682CC0378900C56610 /* SceneDelegate.swift in Sources */,
 				1A90C4812CC04F970066E76D /* UserScoresView.swift in Sources */,
