@@ -21,6 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let background = SKSpriteNode(imageNamed: Resources.Images.gameBackView)
     var box: SKSpriteNode!
     var starsCollected: Int = 0  // Количество собранных звезд
+    var currentLevel = 1
     weak var gameViewControllerDelegate: GameViewController?
 
     override func didMove(to view: SKView) {
@@ -29,6 +30,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.backgroundColor = .clear
     }
 
+    func reloadLevel() {
+        // Очищаем текущие узлы сцены (мяч, зоны гравитации, коробку и т.д.)
+        removeAllChildren()
+        gravityZones.removeAll()
+
+        // Заново создаем фон и границы
+        setupBackground()
+        setupScene()
+        starsCollected = 0
+        gameViewControllerDelegate?.updateStarsView(stars: starsCollected)
+        // Перезапускаем уровень с тем же номером
+        setupLevel(num: currentLevel)
+    }
     
     func setupBackground() {
             // Создайте SKSpriteNode с фоновым изображением
@@ -152,22 +166,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func endGame() {
-        // Останавливаем игру и показываем сообщение о конце игры
-        self.isPaused = true
-        
-        let gameOverLabel = SKLabelNode(text: "Game Over")
-        gameOverLabel.fontSize = 40
-        gameOverLabel.fontColor = .red
-        gameOverLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
-        
-        addChild(gameOverLabel)
+        gameViewControllerDelegate?.showLose()
     }
 
 
     
     func endLevel() {
         print("Уровень завершён! Мяч попал в коробку сверху.")
-        self.isPaused = true
+        gameViewControllerDelegate?.showWin(with: starsCollected)
     }
     
     func distanceBetween(_ point1: CGPoint, _ point2: CGPoint) -> CGFloat {

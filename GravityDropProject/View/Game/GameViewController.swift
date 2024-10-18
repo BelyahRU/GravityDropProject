@@ -4,6 +4,8 @@ import SnapKit
 
 protocol GameViewControllerDelegate: AnyObject {
     func updateStarsView(stars: Int)
+    func showLose()
+    func showWin(with stars: Int)
 }
 
 class GameViewController: UIViewController, GameViewControllerDelegate {
@@ -58,9 +60,14 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
     }()
     
     let pauseView = PauseView()
+    let loseView = LoseView()
+    var winView = WinView()
     var pauseViewBottomConstraint: Constraint?  // Добавим нижнее ограничение для анимации
-
-
+    var loseViewBottomConstraint: Constraint?  // Добавим нижнее ограничение для анимации
+    var winViewBottomConstraint: Constraint?  // Добавим нижнее ограничение для анимации
+    var loseShowed = false
+    var winShowed = false
+    var currentLevel = 5
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -87,7 +94,7 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
         scene = GameScene(size: sceneSize)
         scene.scaleMode = .resizeFill
         scene.gameViewControllerDelegate = self
-        scene.setupLevel(num: 5)
+        scene.setupLevel(num: currentLevel)
         skView.presentScene(scene)
         
     }
@@ -101,6 +108,8 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
         view.addSubview(pauseButton)
         view.addSubview(pauseView)
         view.addSubview(dimView)
+        view.addSubview(loseView)
+        view.addSubview(winView)
         
         backView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -145,6 +154,20 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
            self.pauseViewBottomConstraint = make.bottom.equalTo(view.snp.bottom).offset(336).constraint  // Появляется снизу
        }
         
+        loseView.snp.makeConstraints { make in
+            make.width.equalTo(318)
+            make.height.equalTo(427)
+            make.centerX.equalToSuperview()
+            self.loseViewBottomConstraint = make.bottom.equalTo(view.snp.bottom).offset(427).constraint
+        }
+        
+        winView.snp.makeConstraints { make in
+            make.width.equalTo(318)
+            make.height.equalTo(427)
+            make.centerX.equalToSuperview()
+            self.winViewBottomConstraint = make.bottom.equalTo(view.snp.bottom).offset(427).constraint
+        }
+        
         dimView.snp.makeConstraints { make in
             make.edges.equalToSuperview() // Затемняющий фон на весь экран
         }
@@ -163,6 +186,42 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
         default:
             self.starsView.image = UIImage(named: Resources.StarViews.starsView3)
         }
+    }
+    
+    func showLose() {
+        if !loseShowed && !winShowed{
+            scene.pause()
+            loseShowed = true
+            self.view.bringSubviewToFront(dimView)
+            self.view.bringSubviewToFront(loseView)
+            UIView.animate(withDuration: 0.3) {
+                self.loseViewBottomConstraint?.update(offset: -self.view.bounds.height / 2 + self.loseView.bounds.height / 2)  // Обновляем смещение, чтобы паузовая панель поднялась
+                self.dimView.isHidden = false
+                self.pauseButton.isHidden = true
+                self.view.layoutIfNeeded()  // Применяем изменения
+            }
+        }
+    }
+    
+    func showWin(with stars: Int) {
+        if !loseShowed && !winShowed{
+            scene.pause()
+            winShowed = true
+            winView.changeStars(with: stars)
+            winView.layoutIfNeeded()
+            
+            scene.pause()
+            // Анимация плавного появления `PauseView`
+            self.view.bringSubviewToFront(dimView)
+            self.view.bringSubviewToFront(winView)
+            UIView.animate(withDuration: 0.3) {
+                self.winViewBottomConstraint?.update(offset: -self.view.bounds.height / 2 + self.winView.bounds.height / 2)  // Обновляем смещение, чтобы паузовая панель поднялась
+                self.dimView.isHidden = false
+                self.pauseButton.isHidden = true
+                self.view.layoutIfNeeded()  // Применяем изменения
+            }
+        }
+        
     }
 
     

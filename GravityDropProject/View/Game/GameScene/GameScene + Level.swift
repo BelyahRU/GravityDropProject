@@ -6,6 +6,7 @@ import SpriteKit
 
 extension GameScene {
     public func setupLevel(num: Int) {
+        self.currentLevel = num
         switch num {
         case 2:
             setupSecondLevel()

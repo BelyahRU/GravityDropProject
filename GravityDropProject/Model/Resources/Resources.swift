@@ -17,6 +17,7 @@ enum Resources {
         static let gameBackView = "gameBackView"
         static let desertGameBackground = "desertGameBackground"
         static let pauseBackview = "pauseBackview"
+        static let winLoseView = "winLoseView"
     }
     
     enum Buttons {
@@ -32,6 +33,7 @@ enum Resources {
         static let tryAgainButton = "tryAgainButton"
         static let exitButton = "exitButton"
         static let continueButton = "continueButton"
+        static let nextLevelButton = "nextLevelButton"
     }
     
     enum StarViews {
@@ -47,6 +49,13 @@ enum Resources {
         static let rectangleObstacle96x8 = "rectangleObstacle96x8"
         static let rectangleObstacle132x8 = "rectangleObstacle132x8"
         static let verticalRectangleObstacle = "verticalRectangleObstacle"
+    }
+    
+    enum ResultStars {
+        static let result0 = "result0"
+        static let result1 = "result1"
+        static let result2 = "result2"
+        static let result3 = "result3"
     }
     
     enum Colors {
