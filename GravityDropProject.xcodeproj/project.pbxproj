@@ -9,7 +9,15 @@
 /* Begin PBXBuildFile section */
 		1A13B0692CC2F9AF003F26B2 /* LevelsSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B0682CC2F9AF003F26B2 /* LevelsSelectionViewModel.swift */; };
 		1A13B06B2CC2FE16003F26B2 /* LevelsSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B06A2CC2FE16003F26B2 /* LevelsSelectionCollectionViewCell.swift */; };
-		1A13B06D2CC30109003F26B2 /* LevelsSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B06C2CC30109003F26B2 /* LevelsSelectionVC.swift */; };
+		1A13B06D2CC30109003F26B2 /* LevelsSelectionVC + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B06C2CC30109003F26B2 /* LevelsSelectionVC + CollectionView.swift */; };
+		1A13B0702CC3E12C003F26B2 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B06F2CC3E12C003F26B2 /* LevelViewController.swift */; };
+		1A13B0722CC3E137003F26B2 /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B0712CC3E137003F26B2 /* LevelView.swift */; };
+		1A13B0742CC3E316003F26B2 /* LevelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B0732CC3E316003F26B2 /* LevelCollectionViewCell.swift */; };
+		1A13B0762CC3E32E003F26B2 /* LevelVC + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B0752CC3E32D003F26B2 /* LevelVC + CollectionView.swift */; };
+		1A13B0782CC3E518003F26B2 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B0772CC3E518003F26B2 /* UserDataManager.swift */; };
+		1A13B07A2CC3E729003F26B2 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B0792CC3E729003F26B2 /* ShadowView.swift */; };
+		1A13B07C2CC3ECA3003F26B2 /* OtherLevelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B07B2CC3ECA3003F26B2 /* OtherLevelsViewController.swift */; };
+		1A13B07E2CC3ED95003F26B2 /* OtherVC + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13B07D2CC3ED95003F26B2 /* OtherVC + CollectionView.swift */; };
 		1A3A9E662CC0378900C56610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9E652CC0378900C56610 /* AppDelegate.swift */; };
 		1A3A9E682CC0378900C56610 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9E672CC0378900C56610 /* SceneDelegate.swift */; };
 		1A3A9E6F2CC0378C00C56610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A3A9E6E2CC0378C00C56610 /* Assets.xcassets */; };
@@ -51,7 +59,15 @@
 /* Begin PBXFileReference section */
 		1A13B0682CC2F9AF003F26B2 /* LevelsSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsSelectionViewModel.swift; sourceTree = "<group>"; };
 		1A13B06A2CC2FE16003F26B2 /* LevelsSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
-		1A13B06C2CC30109003F26B2 /* LevelsSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsSelectionVC.swift; sourceTree = "<group>"; };
+		1A13B06C2CC30109003F26B2 /* LevelsSelectionVC + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelsSelectionVC + CollectionView.swift"; sourceTree = "<group>"; };
+		1A13B06F2CC3E12C003F26B2 /* LevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
+		1A13B0712CC3E137003F26B2 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
+		1A13B0732CC3E316003F26B2 /* LevelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCollectionViewCell.swift; sourceTree = "<group>"; };
+		1A13B0752CC3E32D003F26B2 /* LevelVC + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelVC + CollectionView.swift"; sourceTree = "<group>"; };
+		1A13B0772CC3E518003F26B2 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		1A13B0792CC3E729003F26B2 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		1A13B07B2CC3ECA3003F26B2 /* OtherLevelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherLevelsViewController.swift; sourceTree = "<group>"; };
+		1A13B07D2CC3ED95003F26B2 /* OtherVC + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OtherVC + CollectionView.swift"; sourceTree = "<group>"; };
 		1A3A9E622CC0378900C56610 /* GravityDropProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GravityDropProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A3A9E652CC0378900C56610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A3A9E672CC0378900C56610 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +119,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A13B06E2CC3E112003F26B2 /* Level */ = {
+			isa = PBXGroup;
+			children = (
+				1A13B06F2CC3E12C003F26B2 /* LevelViewController.swift */,
+				1A13B0712CC3E137003F26B2 /* LevelView.swift */,
+				1A13B0732CC3E316003F26B2 /* LevelCollectionViewCell.swift */,
+				1A13B0752CC3E32D003F26B2 /* LevelVC + CollectionView.swift */,
+				1A13B0792CC3E729003F26B2 /* ShadowView.swift */,
+				1A13B07B2CC3ECA3003F26B2 /* OtherLevelsViewController.swift */,
+				1A13B07D2CC3ED95003F26B2 /* OtherVC + CollectionView.swift */,
+			);
+			path = Level;
+			sourceTree = "<group>";
+		};
 		1A3A9E592CC0378900C56610 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +179,7 @@
 				1A3A9E7D2CC037BE00C56610 /* Support */,
 				1A90C4762CC04A1D0066E76D /* LeaderFetcher.swift */,
 				1A90C4782CC04B8D0066E76D /* ScoresManager.swift */,
+				1A13B0772CC3E518003F26B2 /* UserDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -156,7 +187,8 @@
 		1A3A9E7B2CC037A400C56610 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1A90C4A62CC2F0180066E76D /* Levels */,
+				1A13B06E2CC3E112003F26B2 /* Level */,
+				1A90C4A62CC2F0180066E76D /* LevelsSelection */,
 				1A90C48E2CC17CA40066E76D /* Game */,
 				1A90C4832CC052020066E76D /* Settings */,
 				1A90C4822CC051D10066E76D /* Leaderboard */,
@@ -274,15 +306,15 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
-		1A90C4A62CC2F0180066E76D /* Levels */ = {
+		1A90C4A62CC2F0180066E76D /* LevelsSelection */ = {
 			isa = PBXGroup;
 			children = (
 				1A90C4A72CC2F0260066E76D /* LevelsSelectionViewController.swift */,
 				1A90C4AA2CC2F0650066E76D /* LevelsSelectionView.swift */,
 				1A13B06A2CC2FE16003F26B2 /* LevelsSelectionCollectionViewCell.swift */,
-				1A13B06C2CC30109003F26B2 /* LevelsSelectionVC.swift */,
+				1A13B06C2CC30109003F26B2 /* LevelsSelectionVC + CollectionView.swift */,
 			);
-			path = Levels;
+			path = LevelsSelection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,21 +397,29 @@
 				1A90C4AB2CC2F0650066E76D /* LevelsSelectionView.swift in Sources */,
 				1A90C4872CC052180066E76D /* SettingsView.swift in Sources */,
 				1A13B06B2CC2FE16003F26B2 /* LevelsSelectionCollectionViewCell.swift in Sources */,
+				1A13B0702CC3E12C003F26B2 /* LevelViewController.swift in Sources */,
+				1A13B07E2CC3ED95003F26B2 /* OtherVC + CollectionView.swift in Sources */,
 				1A3A9E8D2CC03CFD00C56610 /* MainViewController.swift in Sources */,
 				1A90C4B92CC2F6110066E76D /* PauseView.swift in Sources */,
+				1A13B07A2CC3E729003F26B2 /* ShadowView.swift in Sources */,
 				1A90C4AF2CC2F36A0066E76D /* LeaderboardVC + CollectionView.swift in Sources */,
 				1A90C4792CC04B8D0066E76D /* ScoresManager.swift in Sources */,
 				1A3A9E802CC037D400C56610 /* Coordinator.swift in Sources */,
 				1A90C4B12CC2F3970066E76D /* LeaderboardView.swift in Sources */,
 				1A90C4852CC052100066E76D /* SettingsViewController.swift in Sources */,
+				1A13B0762CC3E32E003F26B2 /* LevelVC + CollectionView.swift in Sources */,
+				1A13B0782CC3E518003F26B2 /* UserDataManager.swift in Sources */,
 				1A90C4922CC17CD70066E76D /* GameViewController.swift in Sources */,
 				1A90C4A82CC2F0260066E76D /* LevelsSelectionViewController.swift in Sources */,
+				1A13B0742CC3E316003F26B2 /* LevelCollectionViewCell.swift in Sources */,
 				1A3A9E862CC03A5100C56610 /* MainView.swift in Sources */,
+				1A13B0722CC3E137003F26B2 /* LevelView.swift in Sources */,
 				1A3A9E882CC03ACA00C56610 /* Resources.swift in Sources */,
 				1A90C47B2CC04DEE0066E76D /* LeaderboardVC + Action.swift in Sources */,
 				1A90C4772CC04A1D0066E76D /* LeaderFetcher.swift in Sources */,
 				1A90C4B32CC2F3FF0066E76D /* LeaderboardViewController.swift in Sources */,
 				1A90C48D2CC063990066E76D /* ClearProgressAgreeView.swift in Sources */,
+				1A13B07C2CC3ECA3003F26B2 /* OtherLevelsViewController.swift in Sources */,
 				1A3A9E662CC0378900C56610 /* AppDelegate.swift in Sources */,
 				1A90C4B52CC2F49D0066E76D /* WinView.swift in Sources */,
 				1A90C4962CC1ACD30066E76D /* GameVC + Action.swift in Sources */,
@@ -389,7 +429,7 @@
 				1A90C4B72CC2F56D0066E76D /* LoseView.swift in Sources */,
 				1A90C4AD2CC2F34A0066E76D /* LeaderCollectionViewCell.swift in Sources */,
 				1A90C4752CC049EB0066E76D /* Leader.swift in Sources */,
-				1A13B06D2CC30109003F26B2 /* LevelsSelectionVC.swift in Sources */,
+				1A13B06D2CC30109003F26B2 /* LevelsSelectionVC + CollectionView.swift in Sources */,
 				1A90C4722CC049D10066E76D /* LeadersViewModel.swift in Sources */,
 				1A13B0692CC2F9AF003F26B2 /* LevelsSelectionViewModel.swift in Sources */,
 				1A90C4902CC17CB00066E76D /* GameScene.swift in Sources */,

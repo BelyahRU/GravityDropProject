@@ -23,7 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         coordinator.start()
         
 //        window?.rootViewController = navigationController
-        window?.rootViewController = LevelsSelectionViewController()
+//        window?.rootViewController = LevelViewController()
+        let nav = UINavigationController()
+        nav.navigationBar.isHidden = true
+        nav.pushViewController(LevelsSelectionViewController(), animated: true)
+        window?.rootViewController = nav
         window?.makeKeyAndVisible()
     }
 

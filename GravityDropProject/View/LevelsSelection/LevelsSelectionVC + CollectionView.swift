@@ -8,6 +8,7 @@ extension LevelsSelectionViewController: UICollectionViewDelegate, UICollectionV
     func setupCollectionView() {
         levelsSelectionView.levelsCollectionView.delegate = self
         levelsSelectionView.levelsCollectionView.dataSource = self
+        levelsSelectionView.levelsCollectionView.isUserInteractionEnabled = true
         
         levelsSelectionView.levelsCollectionView.register(LevelsSelectionCollectionViewCell.self, forCellWithReuseIdentifier: LevelsSelectionCollectionViewCell.reuseId)
     }
@@ -28,6 +29,26 @@ extension LevelsSelectionViewController: UICollectionViewDelegate, UICollectionV
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.row == 0 {
+            let vc = LevelViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 1 {
+            let vc = OtherLevelsViewController()
+            vc.setupView(levelName: "Mountain", imageName: "mountainBack")
+            navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 2 {
+            let vc = OtherLevelsViewController()
+            vc.setupView(levelName: "Ocean", imageName: "oceanBack")
+            navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 3 {
+            let vc = OtherLevelsViewController()
+            vc.setupView(levelName: "Island", imageName: "islandBack")
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     

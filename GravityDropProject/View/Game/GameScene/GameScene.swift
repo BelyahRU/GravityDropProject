@@ -166,6 +166,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func endGame() {
+        // Останавливаем игру и показываем сообщение о конце игры
         gameViewControllerDelegate?.showLose()
     }
 
@@ -173,6 +174,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func endLevel() {
         print("Уровень завершён! Мяч попал в коробку сверху.")
+        
         gameViewControllerDelegate?.showWin(with: starsCollected)
     }
     

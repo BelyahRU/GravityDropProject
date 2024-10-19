@@ -67,7 +67,7 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
     var winViewBottomConstraint: Constraint?  // Добавим нижнее ограничение для анимации
     var loseShowed = false
     var winShowed = false
-    var currentLevel = 5
+    var currentLevel = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
