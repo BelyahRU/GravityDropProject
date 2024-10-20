@@ -90,7 +90,7 @@ final class MainView: UIView {
                 make.centerX.equalToSuperview()
                 make.width.equalTo(318)
                 make.height.equalTo(80)
-                make.top.equalTo(gravityDropLabel.snp.bottom).offset(250)
+                make.top.equalTo(gravityDropLabel.snp.bottom).offset(200)
             }
             
             leaderboardButton.snp.makeConstraints { make in

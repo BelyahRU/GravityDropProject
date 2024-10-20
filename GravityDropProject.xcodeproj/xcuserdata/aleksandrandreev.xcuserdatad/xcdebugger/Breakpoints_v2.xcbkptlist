@@ -110,8 +110,8 @@
             filePath = "GravityDropProject/View/Game/GameViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "showLose(with:)"
             landmarkType = "7">
          </BreakpointContent>

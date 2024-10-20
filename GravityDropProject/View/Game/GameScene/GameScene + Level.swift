@@ -55,7 +55,7 @@ extension GameScene {
     func setupFirstBox() {
         // Добавляем коробку в сцену
         box = SKSpriteNode(imageNamed: "winBox") // Замените на ваше изображение коробки
-        box.position = CGPoint(x: self.background.frame.width - 58, y: 36)  // Текущие отступы от trailing и bottom
+        box.position = CGPoint(x: self.background.frame.width - 100, y: 36)  // Текущие отступы от trailing и bottom
         box.physicsBody = SKPhysicsBody(rectangleOf: box.size)
         box.physicsBody?.isDynamic = false  // Коробка неподвижная
         box.physicsBody?.categoryBitMask = PhysicsCategory.box  // Категория коробки

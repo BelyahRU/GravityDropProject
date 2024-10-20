@@ -75,6 +75,8 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
         setupUI()
         setupScene()
         setupButtons()
+        view.bringSubviewToFront(gravityButton)
+        view.bringSubviewToFront(boostButton)
     }
     
     func setupScene() {
@@ -84,12 +86,20 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
 
         skView.backgroundColor = .clear
         skView.ignoresSiblingOrder = true
-
-        skView.snp.makeConstraints { make in
-            make.top.equalTo(starsView.snp.bottom).offset(16)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.height.equalTo(520)
+        if self.view.frame.height < 800 {
+            skView.snp.makeConstraints { make in
+                make.top.equalTo(starsView.snp.bottom).offset(5)
+                make.leading.equalToSuperview().offset(16)
+                make.trailing.equalToSuperview().offset(-16)
+                make.height.equalTo(500)
+            }
+        } else {
+            skView.snp.makeConstraints { make in
+                make.top.equalTo(starsView.snp.bottom).offset(16)
+                make.leading.equalToSuperview().offset(16)
+                make.trailing.equalToSuperview().offset(-16)
+                make.height.equalTo(520)
+            }
         }
         skView.layoutIfNeeded()
         let sceneSize = CGSize(width: skView.bounds.width, height: skView.bounds.height)
@@ -118,23 +128,45 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
             make.edges.equalToSuperview()
         }
         
-        pauseButton.snp.makeConstraints { make in
-            make.size.equalTo(40)
-            make.leading.equalToSuperview().offset(16)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+        if self.view.frame.height < 800 {
+            
+            starsView.snp.makeConstraints { make in
+                make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(5)
+                make.leading.equalToSuperview().offset(self.view.frame.width / 2 + 10)
+                make.width.equalTo(140)
+                make.height.equalTo(64)
+            }
+            
+            currentLevelLabel.snp.makeConstraints { make in
+                make.trailing.equalToSuperview().offset(-self.view.frame.width / 2 - 10)
+                make.centerY.equalTo(starsView.snp.centerY)
+            }
+            
+            pauseButton.snp.makeConstraints { make in
+                make.size.equalTo(40)
+                make.leading.equalToSuperview().offset(16)
+                make.centerY.equalTo(starsView)
+            }
+        } else {
+            currentLevelLabel.snp.makeConstraints { make in
+                make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(5)
+                make.centerX.equalToSuperview()
+            }
+            
+            starsView.snp.makeConstraints { make in
+                make.top.equalTo(currentLevelLabel.snp.bottom).offset(16)
+                make.centerX.equalToSuperview()
+                make.width.equalTo(140)
+                make.height.equalTo(64)
+            }
+            
+            pauseButton.snp.makeConstraints { make in
+                make.size.equalTo(40)
+                make.leading.equalToSuperview().offset(16)
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            }
         }
         
-        currentLevelLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(5)
-            make.centerX.equalToSuperview()
-        }
-        
-        starsView.snp.makeConstraints { make in
-            make.top.equalTo(currentLevelLabel.snp.bottom).offset(16)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(140)
-            make.height.equalTo(64)
-        }
         
         gravityButton.snp.makeConstraints { make in
             make.height.equalTo(72)

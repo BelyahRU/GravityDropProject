@@ -75,25 +75,49 @@ class LevelsSelectionView: UIView {
             make.centerX.equalToSuperview()
         }
         
-        userScoresView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.width.equalTo(120)
-            make.height.equalTo(64)
-            make.top.equalTo(levelsLabel.snp.bottom).offset(24)
+        if self.frame.height < 800 {
+            userScoresView.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.width.equalTo(120)
+                make.height.equalTo(64)
+                make.top.equalTo(levelsLabel.snp.bottom).offset(14)
+            }
+            
+            homeButton.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.height.equalTo(72)
+                make.width.equalTo(260)
+                make.bottom.equalToSuperview().offset(14)
+            }
+            
+            levelsCollectionView.snp.makeConstraints { make in
+                make.width.equalTo(318)
+                make.height.equalTo(420)
+                make.centerX.equalToSuperview()
+                make.top.equalTo(userScoresView.snp.bottom).offset(30)
+            }
+        } else {
+            userScoresView.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.width.equalTo(120)
+                make.height.equalTo(64)
+                make.top.equalTo(levelsLabel.snp.bottom).offset(24)
+            }
+            
+            homeButton.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.height.equalTo(72)
+                make.width.equalTo(260)
+                make.bottom.equalToSuperview().offset(-24)
+            }
+            
+            levelsCollectionView.snp.makeConstraints { make in
+                make.width.equalTo(318)
+                make.height.equalTo(420)
+                make.centerX.equalToSuperview()
+                make.top.equalTo(userScoresView.snp.bottom).offset(40)
+            }
         }
         
-        homeButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.height.equalTo(72)
-            make.width.equalTo(260)
-            make.bottom.equalToSuperview().offset(-24)
-        }
-        
-        levelsCollectionView.snp.makeConstraints { make in
-            make.width.equalTo(318)
-            make.height.equalTo(420)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(userScoresView.snp.bottom).offset(40)
-        }
     }
 }

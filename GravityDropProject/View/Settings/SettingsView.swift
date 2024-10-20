@@ -285,11 +285,21 @@ final class SettingsView: UIView {
             make.top.equalTo(vibrationBackview.snp.bottom).offset(15)
         }
         
-        clearProgressButton.snp.makeConstraints { make in
-            make.width.equalTo(260)
-            make.height.equalTo(72)
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(homeButton.snp.top).offset(-140)
+        if self.frame.height < 800 {
+            clearProgressButton.snp.makeConstraints { make in
+                make.width.equalTo(260)
+                make.height.equalTo(72)
+                make.centerX.equalToSuperview()
+                make.bottom.equalTo(homeButton.snp.top).offset(-50)
+            }
+        } else  {
+            clearProgressButton.snp.makeConstraints { make in
+                make.width.equalTo(260)
+                make.height.equalTo(72)
+                make.centerX.equalToSuperview()
+                make.bottom.equalTo(homeButton.snp.top).offset(-140)
+            }
         }
+        
     }
 }
