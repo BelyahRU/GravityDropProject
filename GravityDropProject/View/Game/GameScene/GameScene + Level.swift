@@ -6,6 +6,7 @@ import SpriteKit
 
 extension GameScene {
     public func setupLevel(num: Int) {
+        setupBall()
         self.currentLevel = num
         switch num {
         case 2:
@@ -32,6 +33,25 @@ extension GameScene {
         addChild(box)
     }
     
+    func setupBall() {
+        physicsBody?.categoryBitMask = PhysicsCategory.boundary  // Категория для границ
+        physicsBody?.collisionBitMask = PhysicsCategory.ball     // Мяч может сталкиваться с границами
+
+        ball = SKShapeNode(circleOfRadius: 12)
+        ball.fillColor = .white
+        ball.position = CGPoint(x: frame.midX + 30, y: frame.height)
+        ball.physicsBody = SKPhysicsBody(circleOfRadius: 15)
+        ball.physicsBody?.affectedByGravity = true
+        ball.physicsBody?.restitution = 0.3
+        ball.physicsBody?.linearDamping = 0.5
+        ball.physicsBody?.angularDamping = 0.5
+        ball.physicsBody?.categoryBitMask = PhysicsCategory.ball
+        ball.physicsBody?.contactTestBitMask = PhysicsCategory.gravityZone // Регистрируем контакт с гравитационной зоной
+        ball.physicsBody?.collisionBitMask = PhysicsCategory.boundary // Мяч сталкивается с границами
+        
+        addChild(ball)
+    }
+    
     func setupFirstBox() {
         // Добавляем коробку в сцену
         box = SKSpriteNode(imageNamed: "winBox") // Замените на ваше изображение коробки
@@ -40,6 +60,7 @@ extension GameScene {
         box.physicsBody?.isDynamic = false  // Коробка неподвижная
         box.physicsBody?.categoryBitMask = PhysicsCategory.box  // Категория коробки
         box.physicsBody?.contactTestBitMask = PhysicsCategory.ball  // Проверка коллизий с мячом
+        
         box.physicsBody?.collisionBitMask = PhysicsCategory.ball  // Мяч должен столкнуться с коробкой
         box.physicsBody?.restitution = 0  // Без отскока
     }
@@ -122,7 +143,7 @@ extension GameScene {
         
         // Создаём второе гравитационное поле с другим изображением
         let gravityZone2 = SKSpriteNode(imageNamed: "gravityZone")
-        gravityZone2.position = CGPoint(x: 100, y: 100)
+        gravityZone2.position = CGPoint(x: 60, y: 60)
         gravityZone2.zPosition = 1
         gravityZone2.size = CGSize(width: 100, height: 100)
         
@@ -135,6 +156,22 @@ extension GameScene {
 
         addChild(gravityZone2)
         gravityZones.append(gravityZone2)
+        
+        // Создаём второе гравитационное поле с другим изображением
+        let gravityZone3 = SKSpriteNode(imageNamed: "gravityZone")
+        gravityZone3.position = CGPoint(x: size.width - 100, y: 150)
+        gravityZone3.zPosition = 1
+        gravityZone3.size = CGSize(width: 100, height: 100)
+        
+        // Устанавливаем физическое тело для второго поля
+        gravityZone3.physicsBody = SKPhysicsBody(circleOfRadius: gravityZone3.size.width / 2)
+        gravityZone3.physicsBody?.isDynamic = false
+        gravityZone3.physicsBody?.categoryBitMask = PhysicsCategory.gravityZone
+        gravityZone3.physicsBody?.contactTestBitMask = PhysicsCategory.ball
+        gravityZone3.physicsBody?.collisionBitMask = 0
+
+        addChild(gravityZone3)
+        gravityZones.append(gravityZone3)
     }
     
     func spawnSecondStars() {
@@ -173,7 +210,7 @@ extension GameScene {
         let stick = SKSpriteNode(texture: stickTexture)
         stick.size = CGSize(width: 20, height: 176)  // Пример размера палочки
         stick.position = CGPoint(x: CGFloat(self.size.width - 80),
-                                 y: CGFloat(self.size.height / 4 * 3))
+                                 y: CGFloat(self.size.height / 4 * 3 + 50))
         
         stick.physicsBody = SKPhysicsBody(texture: stickTexture, size: stick.size)
         stick.physicsBody?.isDynamic = false  // Препятствие не двигается
@@ -188,7 +225,7 @@ extension GameScene {
         let stick2 = SKSpriteNode(texture: stickTexture2)
         stick2.size = CGSize(width: 80, height: 20)  // Пример размера палочки
         stick2.position = CGPoint(x: CGFloat(self.size.width - 60),
-                                 y: CGFloat(self.size.height / 2))
+                                 y: CGFloat(self.size.height / 2 + 70))
         
         stick2.physicsBody = SKPhysicsBody(texture: stickTexture2, size: stick2.size)
         stick2.physicsBody?.isDynamic = false  // Препятствие не двигается
@@ -227,7 +264,7 @@ extension GameScene {
     
     private func setupThirdGravityZones() {
         let gravityZone = SKSpriteNode(imageNamed: "gravityZone")
-        gravityZone.position = CGPoint(x: 150, y: 100)
+        gravityZone.position = CGPoint(x: 50, y: 100)
         gravityZone.zPosition = 1
         gravityZone.size = CGSize(width: 150, height: 150)
         
@@ -316,19 +353,6 @@ extension GameScene {
         
         addChild(stick)
         
-        let stickTexture2 = SKTexture(imageNamed: Resources.Obstacles.rectangleObstacle60x8)  // Имя файла изображения палочки
-        let stick2 = SKSpriteNode(texture: stickTexture2)
-        stick2.size = CGSize(width: 80, height: 20)  // Пример размера палочки
-        stick2.position = CGPoint(x: CGFloat(self.size.width - 40),
-                                 y: CGFloat(self.size.height - 40))
-        
-        stick2.physicsBody = SKPhysicsBody(texture: stickTexture2, size: stick2.size)
-        stick2.physicsBody?.isDynamic = false  // Препятствие не двигается
-        stick2.physicsBody?.categoryBitMask = PhysicsCategory.obstacle  // Категория препятствия
-        stick2.physicsBody?.contactTestBitMask = PhysicsCategory.ball  // Проверка коллизии с мячом
-        stick2.physicsBody?.collisionBitMask = PhysicsCategory.none  // Без столкновений
-        
-        addChild(stick2)
     }
     
     private func setupFourthLevel() {

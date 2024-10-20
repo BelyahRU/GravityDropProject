@@ -66,6 +66,7 @@ final class MainView: UIView {
     }
     
     private func setupConstraints() {
+        
         backview.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -84,25 +85,49 @@ final class MainView: UIView {
             make.top.equalTo(gravityDropLabel.snp.bottom).offset(24)
         }
         
-        playButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.width.equalTo(318)
-            make.height.equalTo(80)
-            make.top.equalTo(gravityDropLabel.snp.bottom).offset(265)
+        if self.frame.height < 800 {
+            playButton.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.width.equalTo(318)
+                make.height.equalTo(80)
+                make.top.equalTo(gravityDropLabel.snp.bottom).offset(250)
+            }
+            
+            leaderboardButton.snp.makeConstraints { make in
+                make.width.equalTo(260)
+                make.height.equalTo(72)
+                make.centerX.equalToSuperview()
+                make.top.equalTo(playButton.snp.bottom).offset(16)
+            }
+            
+            settingsButton.snp.makeConstraints { make in
+                make.width.equalTo(260)
+                make.height.equalTo(72)
+                make.centerX.equalToSuperview()
+                make.top.equalTo(leaderboardButton.snp.bottom).offset(16)
+            }
+        } else {
+            playButton.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.width.equalTo(318)
+                make.height.equalTo(80)
+                make.top.equalTo(gravityDropLabel.snp.bottom).offset(265)
+            }
+            
+            leaderboardButton.snp.makeConstraints { make in
+                make.width.equalTo(260)
+                make.height.equalTo(72)
+                make.centerX.equalToSuperview()
+                make.top.equalTo(playButton.snp.bottom).offset(72)
+            }
+            
+            settingsButton.snp.makeConstraints { make in
+                make.width.equalTo(260)
+                make.height.equalTo(72)
+                make.centerX.equalToSuperview()
+                make.top.equalTo(leaderboardButton.snp.bottom).offset(16)
+            }
         }
         
-        leaderboardButton.snp.makeConstraints { make in
-            make.width.equalTo(260)
-            make.height.equalTo(72)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(playButton.snp.bottom).offset(72)
-        }
-        
-        settingsButton.snp.makeConstraints { make in
-            make.width.equalTo(260)
-            make.height.equalTo(72)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(leaderboardButton.snp.bottom).offset(16)
-        }
     }
 }

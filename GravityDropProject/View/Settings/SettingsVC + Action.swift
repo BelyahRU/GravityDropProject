@@ -13,14 +13,17 @@ extension SettingsViewController {
         settingsView.onButton.addTarget(self, action: #selector(vibrationOnPressed), for: .touchUpInside)
         settingsView.offButton.addTarget(self, action: #selector(vibrationOffPressed), for: .touchUpInside)
         settingsView.clearProgressButton.addTarget(self, action: #selector(clearProgressPressed), for: .touchUpInside)
+        settingsView.applyButton.addTarget(self, action: #selector(applyPressed), for: .touchUpInside)
         
         clearProgressView.cancelButton.addTarget(self, action: #selector(cancelPressed), for: .touchUpInside)
         clearProgressView.noButton.addTarget(self, action: #selector(noPressed), for: .touchUpInside)
         clearProgressView.yesButton.addTarget(self, action: #selector(yesPressed), for: .touchUpInside)
+        
     }
     
     @objc
     func cancelPressed() {
+        AudioManager.shared.buttonClickEffect()
         UIView.animate(withDuration: 0.5) {
             self.clearProgressTopConstraint?.update(offset: 0)
             self.view.layoutIfNeeded()
@@ -31,6 +34,7 @@ extension SettingsViewController {
     
     @objc
     func noPressed() {
+        AudioManager.shared.buttonClickEffect()
         UIView.animate(withDuration: 0.5) {
             self.clearProgressTopConstraint?.update(offset: 0)
             self.view.layoutIfNeeded()
@@ -38,18 +42,33 @@ extension SettingsViewController {
             self.settingsView.isUserInteractionEnabled = true
         }
         
-        //ADD: no action
     }
     
     @objc
+    func applyPressed() {
+        AudioManager.shared.buttonClickEffect()
+
+        // Получаем значение громкости звуков и музыки из слайдера
+        let soundVolume = settingsView.soundSliderView.value
+        let musicVolume = settingsView.musicSliderView.value
+
+        // Сохраняем значения в процентах (0–100)
+        AudioManager.shared.setOverallVolume(soundVolume / 100)
+        AudioManager.shared.setBackgroundMusicVolume(musicVolume / 100)
+
+    }
+
+    
+    @objc
     func yesPressed() {
+        AudioManager.shared.buttonClickEffect()
         UIView.animate(withDuration: 0.5) {
             self.clearProgressTopConstraint?.update(offset: 0)
             self.view.layoutIfNeeded()
             self.settingsView.alpha = 1
             self.settingsView.isUserInteractionEnabled = true
         }
-        
+        UserDataManager.shared.cleanProgress()
         //ADD: yes action
     }
     
@@ -57,7 +76,6 @@ extension SettingsViewController {
     func soundSliderValueChanged(_ sender: UISlider) {
         let value = Int(sender.value)
         settingsView.soundPercentLabel.text = "\(value)%"
-        //ADD: sound change
     }
     
     @objc
@@ -65,16 +83,17 @@ extension SettingsViewController {
         let value = Int(sender.value)
         settingsView.musicPercentLabel.text = "\(value)%"
         
-        //ADD: music change
     }
     
     @objc
     func homePressed() {
+        AudioManager.shared.buttonClickEffect()
         navigationController?.popViewController(animated: true)
     }
     
     @objc
     func vibrationOffPressed() {
+        AudioManager.shared.buttonClickEffect()
         settingsView.offButton.setTitleColor(.white, for: .normal)
         settingsView.onButton.setTitleColor(.white.withAlphaComponent(0.52), for: .normal)
         
@@ -83,6 +102,7 @@ extension SettingsViewController {
     
     @objc
     func vibrationOnPressed() {
+        AudioManager.shared.buttonClickEffect()
         settingsView.onButton.setTitleColor(.white, for: .normal)
         settingsView.offButton.setTitleColor(.white.withAlphaComponent(0.52), for: .normal)
         
@@ -91,6 +111,7 @@ extension SettingsViewController {
     
     @objc
    func clearProgressPressed() {
+       AudioManager.shared.buttonClickEffect()
        UIView.animate(withDuration: 0.5) {
            self.clearProgressTopConstraint?.update(offset: -550)
            self.view.layoutIfNeeded()

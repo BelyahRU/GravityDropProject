@@ -60,22 +60,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Создаем физическое тело для границ фона
         physicsWorld.contactDelegate = self
         physicsBody = SKPhysicsBody(edgeLoopFrom: background.frame)
-        physicsBody?.categoryBitMask = PhysicsCategory.boundary  // Категория для границ
-        physicsBody?.collisionBitMask = PhysicsCategory.ball     // Мяч может сталкиваться с границами
-
-        ball = SKShapeNode(circleOfRadius: 12)
-        ball.fillColor = .white
-        ball.position = CGPoint(x: frame.midX + 30, y: frame.height)
-        ball.physicsBody = SKPhysicsBody(circleOfRadius: 15)
-        ball.physicsBody?.affectedByGravity = true
-        ball.physicsBody?.restitution = 0.3
-        ball.physicsBody?.linearDamping = 0.5
-        ball.physicsBody?.angularDamping = 0.5
-        ball.physicsBody?.categoryBitMask = PhysicsCategory.ball
-        ball.physicsBody?.contactTestBitMask = PhysicsCategory.gravityZone // Регистрируем контакт с гравитационной зоной
-        ball.physicsBody?.collisionBitMask = PhysicsCategory.boundary // Мяч сталкивается с границами
-        
-        addChild(ball)
     }
 
 
@@ -115,37 +99,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         let firstBody = contact.bodyA
-            let secondBody = contact.bodyB
+        let secondBody = contact.bodyB
 
-            // Убедитесь, что мяч попадает в коробку только сверху
-            if (firstBody.categoryBitMask == PhysicsCategory.ball && secondBody.categoryBitMask == PhysicsCategory.box) ||
-               (firstBody.categoryBitMask == PhysicsCategory.box && secondBody.categoryBitMask == PhysicsCategory.ball) {
-                
-                // Получаем координаты обоих объектов
-                let ballPosition = firstBody.categoryBitMask == PhysicsCategory.ball ? firstBody.node!.position : secondBody.node!.position
-                let boxPosition = firstBody.categoryBitMask == PhysicsCategory.box ? firstBody.node!.position : secondBody.node!.position
-                
-                let ballNode = firstBody.categoryBitMask == PhysicsCategory.ball ? firstBody.node! : secondBody.node!
-                let boxNode = firstBody.categoryBitMask == PhysicsCategory.box ? firstBody.node! : secondBody.node!
-                
-                // Проверяем, касается ли мяч верхней границы коробки
-                if ballPosition.y + ball.frame.size.height / 2 >= boxPosition.y - box.frame.size.height / 2 &&
-                    (ballNode.frame.minX >= boxNode.frame.minX && ballNode.frame.maxX <= boxNode.frame.maxX) {
-                    endLevel()  // Окончание уровня, если мяч касается верхней границы коробки
-                } else {
-                    // Проверяем, касается ли мяч левой, правой или нижней грани коробки
-                    if ballPosition.x + ball.frame.size.width / 2 >= boxPosition.x + box.frame.size.width / 2 {
-                        // Столкновение с правой гранью коробки
-                        ball.physicsBody?.velocity.dx = -abs(ball.physicsBody!.velocity.dx)
-                    } else if ballPosition.x - ball.frame.size.width / 2 <= boxPosition.x - box.frame.size.width / 2 {
-                        // Столкновение с левой гранью коробки
-                        ball.physicsBody?.velocity.dx = abs(ball.physicsBody!.velocity.dx)
-                    } else if ballPosition.y - ball.frame.size.height / 2 <= boxPosition.y - box.frame.size.height / 2 {
-                        // Столкновение с нижней гранью коробки
-                        ball.physicsBody?.velocity.dy = abs(ball.physicsBody!.velocity.dy)
-                    }
-                }
-            }
+        // Убедитесь, что мяч попадает в коробку только сверху
+        if (firstBody.categoryBitMask == PhysicsCategory.ball && secondBody.categoryBitMask == PhysicsCategory.box) ||
+            (firstBody.categoryBitMask == PhysicsCategory.box && secondBody.categoryBitMask == PhysicsCategory.ball) {
+            endLevel()
+        }
+    
 
         let collision = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
 
@@ -156,26 +117,53 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // Увеличиваем счётчик звезд и удаляем звезду
             starNode?.removeFromParent()
             starsCollected += 1
+            AudioManager.shared.ballBasketEffect()
             gameViewControllerDelegate?.updateStarsView(stars: starsCollected)
         }
         
         // Проверяем столкновение мяча с препятствием
         if collision == PhysicsCategory.ball | PhysicsCategory.obstacle {
+//            AudioManager.shared.ballMissedEffect()
             endGame()  // Окончание игры при контакте с препятствием
         }
     }
 
     func endGame() {
         // Останавливаем игру и показываем сообщение о конце игры
-        gameViewControllerDelegate?.showLose()
+        AudioManager.shared.gameOverEffect()
+        gameViewControllerDelegate?.showLose(with: 0)
     }
 
 
     
     func endLevel() {
         print("Уровень завершён! Мяч попал в коробку сверху.")
-        
-        gameViewControllerDelegate?.showWin(with: starsCollected)
+        AudioManager.shared.gameOverEffect()
+        if starsCollected == 0 {
+            gameViewControllerDelegate?.showLose(with: 0)
+        } else if starsCollected == 1 {
+            gameViewControllerDelegate?.showLose(with: 1)
+            UserDataManager.shared.updateLevel(levelNum: currentLevel, isOpened: true, countStars: 1)
+        } else {
+            //checking that we use only com
+            if currentLevel < 5{
+                UserDataManager.shared.updateLevel(levelNum: currentLevel, isOpened: true, countStars: starsCollected)
+                //level opened?
+                if UserDataManager.shared.getLevel(num: currentLevel + 1)!.isOpened {
+                    gameViewControllerDelegate?.showWin(with: starsCollected, showNext: true)
+                }
+                //can open?
+                else if UserDataManager.shared.canOpenLevel(currentLevel + 1) {
+                    UserDataManager.shared.tryToOpenLevel(currentLevel + 1)
+                    gameViewControllerDelegate?.showWin(with: starsCollected, showNext: true)
+                //can't open
+                } else {
+                    gameViewControllerDelegate?.showWin(with: starsCollected, showNext: false)
+                }
+            } else {
+                gameViewControllerDelegate?.showWin(with: starsCollected, showNext: false)
+            }
+        }
     }
     
     func distanceBetween(_ point1: CGPoint, _ point2: CGPoint) -> CGFloat {

@@ -4,13 +4,15 @@ import SnapKit
 
 protocol GameViewControllerDelegate: AnyObject {
     func updateStarsView(stars: Int)
-    func showLose()
-    func showWin(with stars: Int)
+    func showLose(with stars: Int)
+    func showWin(with stars: Int, showNext: Bool)
 }
 
 class GameViewController: UIViewController, GameViewControllerDelegate {
     
     var scene: GameScene!
+    
+    weak var coordinator: DesertCoordinator?
     
     let gravityButton: UIButton = {
        let button = UIButton()
@@ -96,6 +98,7 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
         scene.gameViewControllerDelegate = self
         scene.setupLevel(num: currentLevel)
         skView.presentScene(scene)
+        currentLevelLabel.text = "Level \(currentLevel)"
         
     }
     
@@ -188,10 +191,11 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
         }
     }
     
-    func showLose() {
+    func showLose(with stars: Int) {
         if !loseShowed && !winShowed{
             scene.pause()
             loseShowed = true
+            loseView.changeStars(with: stars)
             self.view.bringSubviewToFront(dimView)
             self.view.bringSubviewToFront(loseView)
             UIView.animate(withDuration: 0.3) {
@@ -203,14 +207,15 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
         }
     }
     
-    func showWin(with stars: Int) {
+    func showWin(with stars: Int, showNext: Bool) {
         if !loseShowed && !winShowed{
             scene.pause()
+            winView.setupAction(showNext: showNext)
             winShowed = true
             winView.changeStars(with: stars)
             winView.layoutIfNeeded()
             
-            scene.pause()
+//            scene.pause()
             // Анимация плавного появления `PauseView`
             self.view.bringSubviewToFront(dimView)
             self.view.bringSubviewToFront(winView)
@@ -241,4 +246,34 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    func loadNewLevel() {
+        // Создаем новую сцену с указанным уровнем
+        // Удаляем старую сцену
+        if let oldSkView = view.subviews.first(where: { $0 is SKView }) as? SKView {
+            oldSkView.removeFromSuperview()
+        }
+        
+        let skView = SKView(frame: .zero)
+        view.addSubview(skView)
+
+        skView.backgroundColor = .clear
+        skView.ignoresSiblingOrder = true
+
+        skView.snp.makeConstraints { make in
+            make.top.equalTo(starsView.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.height.equalTo(520)
+        }
+        skView.layoutIfNeeded()
+        let sceneSize = CGSize(width: skView.bounds.width, height: skView.bounds.height)
+        scene = GameScene(size: sceneSize)
+        scene.scaleMode = .resizeFill
+        scene.gameViewControllerDelegate = self
+        scene.setupLevel(num: currentLevel)
+        skView.presentScene(scene)
+        currentLevelLabel.text = "Level \(currentLevel)"
+    }
+
 }

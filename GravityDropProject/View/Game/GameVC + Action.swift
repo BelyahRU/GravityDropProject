@@ -18,6 +18,7 @@ extension GameViewController {
         
         winView.homeButton.addTarget(self, action: #selector(exitPressed), for: .touchUpInside)
         winView.nextLevelButton.addTarget(self, action: #selector(nextLevelPressed), for: .touchUpInside)
+        winView.tryAgainButton.addTarget(self, action: #selector(reloadPressed), for: .touchUpInside)
     }
     
     //MARK: - GameScene
@@ -33,6 +34,7 @@ extension GameViewController {
     
     @objc
     func pausePressed() {
+        AudioManager.shared.buttonClickEffect()
         scene.pause()
         // Анимация плавного появления `PauseView`
         self.view.bringSubviewToFront(dimView)
@@ -48,6 +50,7 @@ extension GameViewController {
     //MARK: -  PauseView
     @objc
     func continuePressed() {
+        AudioManager.shared.buttonClickEffect()
         dimView.isHidden = true
         scene.pause()
         UIView.animate(withDuration: 0.3) {
@@ -60,9 +63,11 @@ extension GameViewController {
     
     @objc
     func reloadPressed() {
+        AudioManager.shared.buttonClickEffect()
         scene.reloadLevel()
         scene.pause()
         loseShowed = false
+        winShowed = false
         dimView.isHidden = true
         UIView.animate(withDuration: 0.3) {
             self.pauseViewBottomConstraint?.update(offset: +self.view.bounds.height )  // Обновляем смещение, чтобы паузовая панель поднялась
@@ -75,6 +80,7 @@ extension GameViewController {
     
     @objc
     func reloadAfterLose() {
+        AudioManager.shared.buttonClickEffect()
         scene.reloadLevel()
         scene.pause()
         loseShowed = false
@@ -90,12 +96,29 @@ extension GameViewController {
     
     @objc
     func exitPressed() {
-        
+        AudioManager.shared.buttonClickEffect()
+        coordinator?.showMain()
     }
     
     //MARK: - WinView
     @objc
     func nextLevelPressed() {
+        AudioManager.shared.buttonClickEffect()
+        scene.currentLevel = currentLevel + 1
+//        scene.reloadLevel()
+        scene.pause()
+        self.currentLevel = currentLevel + 1
+        dimView.isHidden = true
+        winShowed = false
+        UIView.animate(withDuration: 0.3) {
+            self.winViewBottomConstraint?.update(offset: +self.view.bounds.height )  // Обновляем смещение, чтобы паузовая панель поднялась
+            self.dimView.isHidden = true
+            self.pauseButton.isHidden = false
+            self.view.layoutIfNeeded()  // Применяем изменения
+        }
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.loadNewLevel()
+        }
     }
 }

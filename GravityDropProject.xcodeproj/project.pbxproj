@@ -28,6 +28,17 @@
 		1A3A9E882CC03ACA00C56610 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9E872CC03ACA00C56610 /* Resources.swift */; };
 		1A3A9E8D2CC03CFD00C56610 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9E8C2CC03CFD00C56610 /* MainViewController.swift */; };
 		1A3A9E972CC03FDD00C56610 /* Orbitron.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3A9E962CC03FDD00C56610 /* Orbitron.ttf */; };
+		1A60B94C2CC56A83003C2126 /* LevelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60B94B2CC56A83003C2126 /* LevelCoordinator.swift */; };
+		1A60B94E2CC56BEA003C2126 /* LevelsSelectionVC + Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60B94D2CC56BEA003C2126 /* LevelsSelectionVC + Action.swift */; };
+		1A60B9512CC5792B003C2126 /* DesertCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60B9502CC5792B003C2126 /* DesertCoordinator.swift */; };
+		1A60B9532CC5816A003C2126 /* InDevelopmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60B9522CC5816A003C2126 /* InDevelopmentView.swift */; };
+		1A60B95A2CC5880E003C2126 /* buttonPress.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A60B9542CC5880E003C2126 /* buttonPress.mp3 */; };
+		1A60B95B2CC5880E003C2126 /* endGame.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1A60B9552CC5880E003C2126 /* endGame.wav */; };
+		1A60B95C2CC5880E003C2126 /* fon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A60B9562CC5880E003C2126 /* fon.mp3 */; };
+		1A60B95D2CC5880E003C2126 /* walls.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A60B9572CC5880E003C2126 /* walls.mp3 */; };
+		1A60B95E2CC5880E003C2126 /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A60B9582CC5880E003C2126 /* win.mp3 */; };
+		1A60B9602CC5891F003C2126 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60B95F2CC5891F003C2126 /* AudioManager.swift */; };
+		1A60B9632CC59951003C2126 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60B9622CC59951003C2126 /* LoadingView.swift */; };
 		1A90C4722CC049D10066E76D /* LeadersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A90C4712CC049D10066E76D /* LeadersViewModel.swift */; };
 		1A90C4752CC049EB0066E76D /* Leader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A90C4742CC049EB0066E76D /* Leader.swift */; };
 		1A90C4772CC04A1D0066E76D /* LeaderFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A90C4762CC04A1D0066E76D /* LeaderFetcher.swift */; };
@@ -80,6 +91,17 @@
 		1A3A9E872CC03ACA00C56610 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		1A3A9E8C2CC03CFD00C56610 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1A3A9E962CC03FDD00C56610 /* Orbitron.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Orbitron.ttf; sourceTree = "<group>"; };
+		1A60B94B2CC56A83003C2126 /* LevelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCoordinator.swift; sourceTree = "<group>"; };
+		1A60B94D2CC56BEA003C2126 /* LevelsSelectionVC + Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelsSelectionVC + Action.swift"; sourceTree = "<group>"; };
+		1A60B9502CC5792B003C2126 /* DesertCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesertCoordinator.swift; sourceTree = "<group>"; };
+		1A60B9522CC5816A003C2126 /* InDevelopmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InDevelopmentView.swift; sourceTree = "<group>"; };
+		1A60B9542CC5880E003C2126 /* buttonPress.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buttonPress.mp3; sourceTree = "<group>"; };
+		1A60B9552CC5880E003C2126 /* endGame.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = endGame.wav; sourceTree = "<group>"; };
+		1A60B9562CC5880E003C2126 /* fon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fon.mp3; sourceTree = "<group>"; };
+		1A60B9572CC5880E003C2126 /* walls.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = walls.mp3; sourceTree = "<group>"; };
+		1A60B9582CC5880E003C2126 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
+		1A60B95F2CC5891F003C2126 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		1A60B9622CC59951003C2126 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		1A90C4712CC049D10066E76D /* LeadersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadersViewModel.swift; sourceTree = "<group>"; };
 		1A90C4742CC049EB0066E76D /* Leader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leader.swift; sourceTree = "<group>"; };
 		1A90C4762CC04A1D0066E76D /* LeaderFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderFetcher.swift; sourceTree = "<group>"; };
@@ -152,6 +174,7 @@
 		1A3A9E642CC0378900C56610 /* GravityDropProject */ = {
 			isa = PBXGroup;
 			children = (
+				1A60B9592CC5880E003C2126 /* Music */,
 				1A3A9E962CC03FDD00C56610 /* Orbitron.ttf */,
 				1A3A9E792CC0379200C56610 /* Coodinator */,
 				1A3A9E7A2CC0379F00C56610 /* Model */,
@@ -180,6 +203,7 @@
 				1A90C4762CC04A1D0066E76D /* LeaderFetcher.swift */,
 				1A90C4782CC04B8D0066E76D /* ScoresManager.swift */,
 				1A13B0772CC3E518003F26B2 /* UserDataManager.swift */,
+				1A60B95F2CC5891F003C2126 /* AudioManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -187,6 +211,7 @@
 		1A3A9E7B2CC037A400C56610 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1A60B9612CC59945003C2126 /* Loading */,
 				1A13B06E2CC3E112003F26B2 /* Level */,
 				1A90C4A62CC2F0180066E76D /* LevelsSelection */,
 				1A90C48E2CC17CA40066E76D /* Game */,
@@ -194,6 +219,7 @@
 				1A90C4822CC051D10066E76D /* Leaderboard */,
 				1A3A9E842CC03A4900C56610 /* Main */,
 				1A90C4802CC04F970066E76D /* UserScoresView.swift */,
+				1A60B9522CC5816A003C2126 /* InDevelopmentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -230,6 +256,7 @@
 		1A3A9E812CC037D900C56610 /* MainCoordinator */ = {
 			isa = PBXGroup;
 			children = (
+				1A60B94A2CC56A74003C2126 /* LevelCoordinator */,
 				1A3A9E822CC037E800C56610 /* MainCoordinator.swift */,
 			);
 			path = MainCoordinator;
@@ -243,6 +270,43 @@
 				1A90C47C2CC04E910066E76D /* MainVC + Action.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		1A60B94A2CC56A74003C2126 /* LevelCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				1A60B94F2CC57919003C2126 /* DesertCoordinator */,
+				1A60B94B2CC56A83003C2126 /* LevelCoordinator.swift */,
+			);
+			path = LevelCoordinator;
+			sourceTree = "<group>";
+		};
+		1A60B94F2CC57919003C2126 /* DesertCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				1A60B9502CC5792B003C2126 /* DesertCoordinator.swift */,
+			);
+			path = DesertCoordinator;
+			sourceTree = "<group>";
+		};
+		1A60B9592CC5880E003C2126 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				1A60B9542CC5880E003C2126 /* buttonPress.mp3 */,
+				1A60B9552CC5880E003C2126 /* endGame.wav */,
+				1A60B9562CC5880E003C2126 /* fon.mp3 */,
+				1A60B9572CC5880E003C2126 /* walls.mp3 */,
+				1A60B9582CC5880E003C2126 /* win.mp3 */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		1A60B9612CC59945003C2126 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				1A60B9622CC59951003C2126 /* LoadingView.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 		1A90C4732CC049E30066E76D /* Models */ = {
@@ -313,6 +377,7 @@
 				1A90C4AA2CC2F0650066E76D /* LevelsSelectionView.swift */,
 				1A13B06A2CC2FE16003F26B2 /* LevelsSelectionCollectionViewCell.swift */,
 				1A13B06C2CC30109003F26B2 /* LevelsSelectionVC + CollectionView.swift */,
+				1A60B94D2CC56BEA003C2126 /* LevelsSelectionVC + Action.swift */,
 			);
 			path = LevelsSelection;
 			sourceTree = "<group>";
@@ -381,9 +446,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A60B95C2CC5880E003C2126 /* fon.mp3 in Resources */,
 				1A3A9E6F2CC0378C00C56610 /* Assets.xcassets in Resources */,
+				1A60B95D2CC5880E003C2126 /* walls.mp3 in Resources */,
+				1A60B95E2CC5880E003C2126 /* win.mp3 in Resources */,
 				1A3A9E972CC03FDD00C56610 /* Orbitron.ttf in Resources */,
+				1A60B95A2CC5880E003C2126 /* buttonPress.mp3 in Resources */,
 				1A3A9E722CC0378C00C56610 /* Base in Resources */,
+				1A60B95B2CC5880E003C2126 /* endGame.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,7 +465,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A90C4AB2CC2F0650066E76D /* LevelsSelectionView.swift in Sources */,
+				1A60B94C2CC56A83003C2126 /* LevelCoordinator.swift in Sources */,
 				1A90C4872CC052180066E76D /* SettingsView.swift in Sources */,
+				1A60B9512CC5792B003C2126 /* DesertCoordinator.swift in Sources */,
 				1A13B06B2CC2FE16003F26B2 /* LevelsSelectionCollectionViewCell.swift in Sources */,
 				1A13B0702CC3E12C003F26B2 /* LevelViewController.swift in Sources */,
 				1A13B07E2CC3ED95003F26B2 /* OtherVC + CollectionView.swift in Sources */,
@@ -404,6 +476,7 @@
 				1A13B07A2CC3E729003F26B2 /* ShadowView.swift in Sources */,
 				1A90C4AF2CC2F36A0066E76D /* LeaderboardVC + CollectionView.swift in Sources */,
 				1A90C4792CC04B8D0066E76D /* ScoresManager.swift in Sources */,
+				1A60B9632CC59951003C2126 /* LoadingView.swift in Sources */,
 				1A3A9E802CC037D400C56610 /* Coordinator.swift in Sources */,
 				1A90C4B12CC2F3970066E76D /* LeaderboardView.swift in Sources */,
 				1A90C4852CC052100066E76D /* SettingsViewController.swift in Sources */,
@@ -433,7 +506,10 @@
 				1A90C4722CC049D10066E76D /* LeadersViewModel.swift in Sources */,
 				1A13B0692CC2F9AF003F26B2 /* LevelsSelectionViewModel.swift in Sources */,
 				1A90C4902CC17CB00066E76D /* GameScene.swift in Sources */,
+				1A60B94E2CC56BEA003C2126 /* LevelsSelectionVC + Action.swift in Sources */,
+				1A60B9602CC5891F003C2126 /* AudioManager.swift in Sources */,
 				1A3A9E682CC0378900C56610 /* SceneDelegate.swift in Sources */,
+				1A60B9532CC5816A003C2126 /* InDevelopmentView.swift in Sources */,
 				1A90C4812CC04F970066E76D /* UserScoresView.swift in Sources */,
 				1A90C47F2CC04F340066E76D /* MainViewModel.swift in Sources */,
 				1A90C48B2CC05D560066E76D /* SettingsVC + Action.swift in Sources */,

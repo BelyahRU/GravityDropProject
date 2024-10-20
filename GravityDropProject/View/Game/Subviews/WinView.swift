@@ -47,11 +47,18 @@ class WinView: UIView {
          button.setImage(UIImage(named: Resources.Buttons.homeButton), for: .normal)
          return button
     }()
- 
+    
+    public let tryAgainButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: Resources.Buttons.tryAgainButton), for: .normal)
+         return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -67,7 +74,6 @@ class WinView: UIView {
         addSubview(wowLabel)
         addSubview(youWinLabel)
         addSubview(starsView)
-        addSubview(nextLevelButton)
         addSubview(homeButton)
     }
     
@@ -100,11 +106,35 @@ class WinView: UIView {
             make.bottom.equalToSuperview().offset(-16)
         }
         
+    }
+    
+    private func setupNextLevelButton() {
+        addSubview(nextLevelButton)
+        
         nextLevelButton.snp.makeConstraints { make in
             make.width.equalTo(278)
             make.height.equalTo(72)
             make.centerX.equalToSuperview()
             make.bottom.equalTo(homeButton.snp.top).offset(-12)
+        }
+    }
+    
+    private func setupTryAgainButton() {
+        addSubview(tryAgainButton)
+        
+        tryAgainButton.snp.makeConstraints { make in
+            make.width.equalTo(278)
+            make.height.equalTo(72)
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(homeButton.snp.top).offset(-12)
+        }
+    }
+    
+    func setupAction(showNext: Bool) {
+        if showNext {
+            setupNextLevelButton()
+        } else {
+            setupTryAgainButton()
         }
     }
     

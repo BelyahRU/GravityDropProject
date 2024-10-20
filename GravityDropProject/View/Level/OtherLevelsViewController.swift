@@ -42,31 +42,31 @@ class OtherLevelsViewController: UIViewController {
     
     let defaultBiomes:[String: [LevelModel]]  =
     
-        ["Mountain": [
-            LevelModel(num: 7, isOpened: false, countStars: 0, countStarsNeedToOpen: 20),
-            LevelModel(num: 8, isOpened: false, countStars: 0, countStarsNeedToOpen: 25),
-            LevelModel(num: 9, isOpened: false, countStars: 0, countStarsNeedToOpen: 30),
-            LevelModel(num: 10, isOpened: false, countStars: 0, countStarsNeedToOpen: 35),
-            LevelModel(num: 11, isOpened: false, countStars: 0, countStarsNeedToOpen: 40),
-            LevelModel(num: 12, isOpened: false, countStars: 0, countStarsNeedToOpen: 45)
-        ],
-        "Ocean": [
-            LevelModel(num: 13, isOpened: false, countStars: 0, countStarsNeedToOpen: 50),
-            LevelModel(num: 14, isOpened: false, countStars: 0, countStarsNeedToOpen: 55),
-            LevelModel(num: 15, isOpened: false, countStars: 0, countStarsNeedToOpen: 60),
-            LevelModel(num: 16, isOpened: false, countStars: 0, countStarsNeedToOpen: 65),
-            LevelModel(num: 17, isOpened: false, countStars: 0, countStarsNeedToOpen: 70),
-            LevelModel(num: 18, isOpened: false, countStars: 0, countStarsNeedToOpen: 75)
-        ],
-        "Island": [
-            LevelModel(num: 19, isOpened: false, countStars: 0, countStarsNeedToOpen: 80),
-            LevelModel(num: 20, isOpened: false, countStars: 0, countStarsNeedToOpen: 85),
-            LevelModel(num: 21, isOpened: false, countStars: 0, countStarsNeedToOpen: 90),
-            LevelModel(num: 22, isOpened: false, countStars: 0, countStarsNeedToOpen: 95),
-            LevelModel(num: 23, isOpened: false, countStars: 0, countStarsNeedToOpen: 100),
-            LevelModel(num: 24, isOpened: false, countStars: 0, countStarsNeedToOpen: 105)
-        ]
-    ]
+    ["Mountain": [
+        LevelModel(num: 7, isOpened: false, countStars: 0, countStarsNeedToOpen: 16),
+        LevelModel(num: 8, isOpened: false, countStars: 0, countStarsNeedToOpen: 18),
+        LevelModel(num: 9, isOpened: false, countStars: 0, countStarsNeedToOpen: 20),
+        LevelModel(num: 10, isOpened: false, countStars: 0, countStarsNeedToOpen: 22),
+        LevelModel(num: 11, isOpened: false, countStars: 0, countStarsNeedToOpen: 24),
+        LevelModel(num: 12, isOpened: false, countStars: 0, countStarsNeedToOpen: 32)
+    ],
+    "Ocean": [
+        LevelModel(num: 13, isOpened: false, countStars: 0, countStarsNeedToOpen: 32),
+        LevelModel(num: 14, isOpened: false, countStars: 0, countStarsNeedToOpen: 34),
+        LevelModel(num: 15, isOpened: false, countStars: 0, countStarsNeedToOpen: 36),
+        LevelModel(num: 16, isOpened: false, countStars: 0, countStarsNeedToOpen: 38),
+        LevelModel(num: 17, isOpened: false, countStars: 0, countStarsNeedToOpen: 42),
+        LevelModel(num: 18, isOpened: false, countStars: 0, countStarsNeedToOpen: 48)
+    ],
+    "Island": [
+        LevelModel(num: 19, isOpened: false, countStars: 0, countStarsNeedToOpen: 48),
+        LevelModel(num: 20, isOpened: false, countStars: 0, countStarsNeedToOpen: 50),
+        LevelModel(num: 21, isOpened: false, countStars: 0, countStarsNeedToOpen: 52),
+        LevelModel(num: 22, isOpened: false, countStars: 0, countStarsNeedToOpen: 54),
+        LevelModel(num: 23, isOpened: false, countStars: 0, countStarsNeedToOpen: 56),
+        LevelModel(num: 24, isOpened: false, countStars: 0, countStarsNeedToOpen: 60)
+    ]]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,6 +114,7 @@ class OtherLevelsViewController: UIViewController {
     
     @objc
     func backPressed() {
+        AudioManager.shared.buttonClickEffect()
         navigationController?.popViewController(animated: true)
     }
 }

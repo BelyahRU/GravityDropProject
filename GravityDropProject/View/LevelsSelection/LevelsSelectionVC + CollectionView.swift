@@ -32,23 +32,19 @@ extension LevelsSelectionViewController: UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if indexPath.row == 0 {
-            let vc = LevelViewController()
-            navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.row == 1 {
-            let vc = OtherLevelsViewController()
-            vc.setupView(levelName: "Mountain", imageName: "mountainBack")
-            navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.row == 2 {
-            let vc = OtherLevelsViewController()
-            vc.setupView(levelName: "Ocean", imageName: "oceanBack")
-            navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.row == 3 {
-            let vc = OtherLevelsViewController()
-            vc.setupView(levelName: "Island", imageName: "islandBack")
-            navigationController?.pushViewController(vc, animated: true)
+        currentBiomeIndex = indexPath.row
+        if currentBiomeIndex == 0 {
+            AudioManager.shared.buttonClickEffect()
+            coordinator?.setupBiome(index: 0)
+        } else {
+            self.inDevelopmnentView.isHidden = false
+            UIView.animate(withDuration: 0.3) {
+                self.dimView.isHidden = false
+                self.inDevelopmentViewBottomConstraint?.update(offset: -self.view.bounds.height / 2 + self.inDevelopmnentView.bounds.height / 2)
+                self.view.layoutIfNeeded()  // Применяем изменения
+            }
         }
+//        coordinator?.setupBiome(index: indexPath.row)
     }
     
     

@@ -37,6 +37,15 @@ final class SettingsViewController: UIViewController {
             clearProgressTopConstraint = make.top.equalTo(view.snp.bottom).constraint
         }
         
+        settingsView.soundSliderView.setValue(AudioManager.shared.overallVolume * 100, animated: false)
+        settingsView.musicSliderView.setValue(AudioManager.shared.backgroundMusicVolume * 100, animated: false)
+        settingsView.soundPercentLabel.text = convertToPercentage(AudioManager.shared.overallVolume)
+        settingsView.musicPercentLabel.text = convertToPercentage(AudioManager.shared.backgroundMusicVolume)
+    }
+    
+    func convertToPercentage(_ value: Float) -> String {
+        let percentage = value * 100 // Переводим в проценты
+        return String(format: "%.0f%%", percentage) // Форматируем строку
     }
     
 }

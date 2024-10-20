@@ -106,4 +106,13 @@ class LoseView: UIView {
             make.bottom.equalTo(homeButton.snp.top).offset(-12)
         }
     }
+    
+    public func changeStars(with num: Int) {
+        switch num {
+        case 0:
+            starsView.image = UIImage(named: Resources.StarViews.starsView0)
+        default:
+            starsView.image = UIImage(named: Resources.StarViews.starsView1)
+        }
+    }
 }

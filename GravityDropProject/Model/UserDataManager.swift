@@ -48,18 +48,23 @@ class UserDataManager {
     func updateLevel(levelNum: Int, isOpened: Bool? = nil, countStars: Int? = nil) {
         var currentLevels = levels
         
+        // Ищем индекс уровня по его номеру
         if let index = currentLevels.firstIndex(where: { $0.num == levelNum }) {
+            
+            // Обновляем статус "открыт/закрыт", если передано значение
             if let isOpened = isOpened {
                 currentLevels[index].isOpened = isOpened
-            }
-            if let countStars = countStars {
-                currentLevels[index].countStars = countStars
+                // Обновляем количество звезд, только если оно больше текущего значения
+                if let newStars = countStars, newStars > currentLevels[index].countStars {
+                    currentLevels[index].countStars = newStars
+                }
             }
             
-            // Обновляем уровни
+            // Обновляем уровни в UserDefaults
             levels = currentLevels
         }
     }
+
     
     // Подсчет общего количества собранных звездочек
     func getTotalStars() -> Int {
@@ -83,5 +88,10 @@ class UserDataManager {
         if canOpenLevel(num) {
             updateLevel(levelNum: num, isOpened: true)
         }
+    }
+    
+    func cleanProgress() {
+        // Сохраняем уровни в значения по умолчанию
+        levels = defaultLevels
     }
 }

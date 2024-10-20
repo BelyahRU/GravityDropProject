@@ -8,6 +8,8 @@ final class MainCoordinator: Coordinator {
     var leaderboardViewController: LeaderboardViewController!
     var settingsViewController: SettingsViewController!
     
+    var levelCoordinator: LevelCoordinator!
+    
     
     func start() {
         showMain()
@@ -29,5 +31,12 @@ final class MainCoordinator: Coordinator {
         settingsViewController = SettingsViewController()
         settingsViewController.coordinator = self
         navigationController.pushViewController(settingsViewController, animated: true)
+    }
+    
+    func showLevels() {
+        levelCoordinator = LevelCoordinator()
+        levelCoordinator.mainCoordinator = self
+        levelCoordinator.navigationController = self.navigationController
+        levelCoordinator.start()
     }
 }

@@ -9,6 +9,6 @@ final class ScoresManager {
     private init() { }
     
     func getCurrentUserScores() -> Int {
-        return currentScores
+        return UserDataManager.shared.getTotalStars()
     }
 }

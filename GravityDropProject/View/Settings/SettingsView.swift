@@ -126,6 +126,13 @@ final class SettingsView: UIView {
         return button
     }()
     
+    let applyButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(named: "applyButton"), for: .normal)
+        button.backgroundColor = .clear
+        return button
+    }()
+    
     let offButton: UIButton = {
        let button = UIButton()
         button.setTitle("OFF", for: .normal)
@@ -172,6 +179,7 @@ final class SettingsView: UIView {
         addSubview(onButton)
         addSubview(offButton)
         addSubview(clearProgressButton)
+        addSubview(applyButton)
     }
     
     private func setupConstraints() {
@@ -270,11 +278,18 @@ final class SettingsView: UIView {
             make.trailing.equalTo(offButton.snp.leading).offset(-11)
         }
         
+        applyButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalTo(158)
+            make.height.equalTo(57)
+            make.top.equalTo(vibrationBackview.snp.bottom).offset(15)
+        }
+        
         clearProgressButton.snp.makeConstraints { make in
             make.width.equalTo(260)
             make.height.equalTo(72)
             make.centerX.equalToSuperview()
-            make.top.equalTo(vibrationBackview.snp.bottom).offset(48)
+            make.bottom.equalTo(homeButton.snp.top).offset(-140)
         }
     }
 }

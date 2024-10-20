@@ -38,9 +38,14 @@ extension LevelViewController: UICollectionViewDataSource, UICollectionViewDeleg
                 return
             }
             if level.isOpened {
-                let vc = GameViewController()
-                vc.currentLevel = indexPath.row + 1
-                navigationController?.pushViewController(vc, animated: true)
+                coordinator?.showGame(index: indexPath.row)
+            }
+        } else {
+            self.inDevelopmnentView.isHidden = false
+            UIView.animate(withDuration: 0.3) {
+                self.dimView.isHidden = false
+                self.inDevelopmentViewBottomConstraint?.update(offset: -self.view.bounds.height / 2 + self.inDevelopmnentView.bounds.height / 2)
+                self.view.layoutIfNeeded()  // Применяем изменения
             }
         }
     }
