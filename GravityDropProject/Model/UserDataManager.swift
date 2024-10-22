@@ -19,10 +19,10 @@ class UserDataManager {
     private var defaultLevels: [LevelModel] {
         return [
             LevelModel(num: 1, isOpened: true, countStars: 0, countStarsNeedToOpen: 0),
-            LevelModel(num: 2, isOpened: false, countStars: 0, countStarsNeedToOpen: 2),
-            LevelModel(num: 3, isOpened: false, countStars: 0, countStarsNeedToOpen: 4),
-            LevelModel(num: 4, isOpened: false, countStars: 0, countStarsNeedToOpen: 7),
-            LevelModel(num: 5, isOpened: false, countStars: 0, countStarsNeedToOpen: 10),
+            LevelModel(num: 2, isOpened: true, countStars: 0, countStarsNeedToOpen: 2),
+            LevelModel(num: 3, isOpened: true, countStars: 0, countStarsNeedToOpen: 4),
+            LevelModel(num: 4, isOpened: true, countStars: 0, countStarsNeedToOpen: 7),
+            LevelModel(num: 5, isOpened: true, countStars: 0, countStarsNeedToOpen: 10),
             LevelModel(num: 6, isOpened: false, countStars: 0, countStarsNeedToOpen: 15)
         ]
     }

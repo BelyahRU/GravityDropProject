@@ -97,7 +97,11 @@ extension GameViewController {
     @objc
     func exitPressed() {
         AudioManager.shared.buttonClickEffect()
-        coordinator?.showMain()
+        guard let coordinator = coordinator else {
+            navigationController?.popViewController(animated: true)
+            return
+        }
+        coordinator.showMain()
     }
     
     //MARK: - WinView

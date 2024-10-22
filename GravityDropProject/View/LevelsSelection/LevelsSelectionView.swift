@@ -87,7 +87,7 @@ class LevelsSelectionView: UIView {
                 make.centerX.equalToSuperview()
                 make.height.equalTo(72)
                 make.width.equalTo(260)
-                make.bottom.equalToSuperview().offset(14)
+                make.bottom.equalToSuperview().offset(-14)
             }
             
             levelsCollectionView.snp.makeConstraints { make in

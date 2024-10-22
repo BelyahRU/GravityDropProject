@@ -7,6 +7,7 @@ final class MainCoordinator: Coordinator {
     var mainViewController: MainViewController!
     var leaderboardViewController: LeaderboardViewController!
     var settingsViewController: SettingsViewController!
+    var gameViewController: GameViewController!
     
     var levelCoordinator: LevelCoordinator!
     
@@ -38,5 +39,12 @@ final class MainCoordinator: Coordinator {
         levelCoordinator.mainCoordinator = self
         levelCoordinator.navigationController = self.navigationController
         levelCoordinator.start()
+    }
+    
+    func showGame() {
+        gameViewController = GameViewController()
+        let currentLevel = LevelFetcher.shared.getLastSavedLevel()
+        gameViewController.currentLevel = currentLevel
+        navigationController.pushViewController(gameViewController, animated: true)
     }
 }

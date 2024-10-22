@@ -72,6 +72,7 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
     var currentLevel = 1
     override func viewDidLoad() {
         super.viewDidLoad()
+        LevelFetcher.shared.saveLevel(currentLevel)
         setupUI()
         setupScene()
         setupButtons()
@@ -306,6 +307,7 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
         scene.setupLevel(num: currentLevel)
         skView.presentScene(scene)
         currentLevelLabel.text = "Level \(currentLevel)"
+        LevelFetcher.shared.saveLevel(currentLevel)
     }
 
 }

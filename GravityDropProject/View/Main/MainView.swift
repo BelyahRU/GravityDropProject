@@ -28,6 +28,13 @@ final class MainView: UIView {
         return button
     }()
     
+    public let levelsButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "levelsButton"), for: .normal)
+        button.backgroundColor = .clear
+        return button
+    }()
+    
     public let leaderboardButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: Resources.Buttons.leaderboardButton), for: .normal)
@@ -61,6 +68,7 @@ final class MainView: UIView {
         addSubview(gravityDropLabel)
         addSubview(userScoresView)
         addSubview(playButton)
+        addSubview(levelsButton)
         addSubview(leaderboardButton)
         addSubview(settingsButton)
     }
@@ -90,14 +98,21 @@ final class MainView: UIView {
                 make.centerX.equalToSuperview()
                 make.width.equalTo(318)
                 make.height.equalTo(80)
-                make.top.equalTo(gravityDropLabel.snp.bottom).offset(200)
+                make.top.equalTo(gravityDropLabel.snp.bottom).offset(100)
+            }
+            
+            levelsButton.snp.makeConstraints { make in
+                make.width.equalTo(260)
+                make.height.equalTo(72)
+                make.centerX.equalToSuperview()
+                make.top.equalTo(playButton.snp.bottom).offset(16)
             }
             
             leaderboardButton.snp.makeConstraints { make in
                 make.width.equalTo(260)
                 make.height.equalTo(72)
                 make.centerX.equalToSuperview()
-                make.top.equalTo(playButton.snp.bottom).offset(16)
+                make.top.equalTo(levelsButton.snp.bottom).offset(16)
             }
             
             settingsButton.snp.makeConstraints { make in
@@ -111,14 +126,21 @@ final class MainView: UIView {
                 make.centerX.equalToSuperview()
                 make.width.equalTo(318)
                 make.height.equalTo(80)
-                make.top.equalTo(gravityDropLabel.snp.bottom).offset(265)
+                make.top.equalTo(gravityDropLabel.snp.bottom).offset(165)
+            }
+            
+            levelsButton.snp.makeConstraints { make in
+                make.width.equalTo(260)
+                make.height.equalTo(72)
+                make.centerX.equalToSuperview()
+                make.top.equalTo(playButton.snp.bottom).offset(72)
             }
             
             leaderboardButton.snp.makeConstraints { make in
                 make.width.equalTo(260)
                 make.height.equalTo(72)
                 make.centerX.equalToSuperview()
-                make.top.equalTo(playButton.snp.bottom).offset(72)
+                make.top.equalTo(levelsButton.snp.bottom).offset(16)
             }
             
             settingsButton.snp.makeConstraints { make in
@@ -128,6 +150,6 @@ final class MainView: UIView {
                 make.top.equalTo(leaderboardButton.snp.bottom).offset(16)
             }
         }
-        
+    
     }
 }

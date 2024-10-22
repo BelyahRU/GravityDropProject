@@ -28,6 +28,7 @@
 		1A3A9E882CC03ACA00C56610 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9E872CC03ACA00C56610 /* Resources.swift */; };
 		1A3A9E8D2CC03CFD00C56610 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A9E8C2CC03CFD00C56610 /* MainViewController.swift */; };
 		1A3A9E972CC03FDD00C56610 /* Orbitron.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3A9E962CC03FDD00C56610 /* Orbitron.ttf */; };
+		1A571A462CC7D67700556B70 /* LevelFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A571A452CC7D67700556B70 /* LevelFetcher.swift */; };
 		1A60B94C2CC56A83003C2126 /* LevelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60B94B2CC56A83003C2126 /* LevelCoordinator.swift */; };
 		1A60B94E2CC56BEA003C2126 /* LevelsSelectionVC + Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60B94D2CC56BEA003C2126 /* LevelsSelectionVC + Action.swift */; };
 		1A60B9512CC5792B003C2126 /* DesertCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60B9502CC5792B003C2126 /* DesertCoordinator.swift */; };
@@ -91,6 +92,7 @@
 		1A3A9E872CC03ACA00C56610 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		1A3A9E8C2CC03CFD00C56610 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1A3A9E962CC03FDD00C56610 /* Orbitron.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Orbitron.ttf; sourceTree = "<group>"; };
+		1A571A452CC7D67700556B70 /* LevelFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelFetcher.swift; sourceTree = "<group>"; };
 		1A60B94B2CC56A83003C2126 /* LevelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCoordinator.swift; sourceTree = "<group>"; };
 		1A60B94D2CC56BEA003C2126 /* LevelsSelectionVC + Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelsSelectionVC + Action.swift"; sourceTree = "<group>"; };
 		1A60B9502CC5792B003C2126 /* DesertCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesertCoordinator.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				1A3A9E7D2CC037BE00C56610 /* Support */,
 				1A90C4762CC04A1D0066E76D /* LeaderFetcher.swift */,
 				1A90C4782CC04B8D0066E76D /* ScoresManager.swift */,
+				1A571A452CC7D67700556B70 /* LevelFetcher.swift */,
 				1A13B0772CC3E518003F26B2 /* UserDataManager.swift */,
 				1A60B95F2CC5891F003C2126 /* AudioManager.swift */,
 			);
@@ -490,6 +493,7 @@
 				1A3A9E882CC03ACA00C56610 /* Resources.swift in Sources */,
 				1A90C47B2CC04DEE0066E76D /* LeaderboardVC + Action.swift in Sources */,
 				1A90C4772CC04A1D0066E76D /* LeaderFetcher.swift in Sources */,
+				1A571A462CC7D67700556B70 /* LevelFetcher.swift in Sources */,
 				1A90C4B32CC2F3FF0066E76D /* LeaderboardViewController.swift in Sources */,
 				1A90C48D2CC063990066E76D /* ClearProgressAgreeView.swift in Sources */,
 				1A13B07C2CC3ECA3003F26B2 /* OtherLevelsViewController.swift in Sources */,
